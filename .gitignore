@@ -1,0 +1,6 @@
+__pycache__/
+venv/
+.env
+support_files/
+*.mp4
+google/credentials.json

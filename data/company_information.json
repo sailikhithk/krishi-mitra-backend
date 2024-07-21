@@ -1,0 +1,952 @@
+{
+  "Microsoft": {
+    "category": "Product-based",
+    "spread_across": [
+      "United States",
+      "Global"
+    ],
+    "working_domain": "Technology",
+    "about_company": [
+      "Founded in 1975, Microsoft has a rich history in the technology industry. They are the creators of the widely used Windows operating system, which has evolved over the years. Microsoft is a leading provider of cloud services with Azure, serving millions of businesses worldwide. With a diverse range of software and hardware products, they have a significant global presence. Their headquarters is located in Redmond, Washington, where they continue to innovate and shape the future of technology."
+    ],
+    "latest_news": [
+      "In a major acquisition move, Microsoft recently acquired GitHub for a staggering $7.5 billion. The company has launched Windows 11 with a fresh user interface and exciting new features. Microsoft remains committed to expanding its cloud services, catering to the growing demands of businesses and organizations."
+    ],
+    "industry_trends": [
+      "Cloud computing and AI are key focus areas for tech giants like Microsoft. Highlight any experience you have working with Azure cloud services or AI/ML technologies.",
+      "With remote and hybrid work expanding, collaboration/productivity tools like Microsoft Teams are becoming essential for businesses. Discuss your skills with such tools and how you could help organizations adopt them."
+    ]
+  },
+  "Google": {
+    "category": "Product-based",
+    "spread_across": [
+      "United States",
+      "Global"
+    ],
+    "working_domain": "Technology",
+    "about_company": [
+      "Established in 1998, Google has become an iconic name in the technology landscape. Known for its powerful search engine and a wide range of online services, Google has left a significant mark on the internet. They are the creators of the popular Android operating system, powering billions of smartphones worldwide. Google has emerged as a major player in cloud computing, offering scalable and innovative solutions. With its headquarters nestled in Mountain View, California, Google continues to drive advances in technology and AI."
+    ],
+    "latest_news": [
+      "Google made headlines by announcing quantum supremacy, achieving computing capabilities previously deemed impossible. The company is aggressively expanding its data centers across the globe to meet the increasing demand for cloud services. Investing heavily in artificial intelligence and machine learning, Google aims to shape the future of technology and automation."
+    ],
+    "industry_trends": [
+      "Google is pushing boundaries in AI research and development. Highlight any specialized skills or experience you have in AI/ML.",
+      "As consumer data privacy concerns grow, ethics in technology is critical. Be prepared to discuss responsible use of data and AI."
+    ]
+  },
+  "Apple": {
+    "category": "Product-based",
+    "spread_across": [
+      "United States",
+      "Global"
+    ],
+    "working_domain": "Technology",
+    "about_company": [
+      "Apple Inc., founded by Steve Jobs, Steve Wozniak, and Ronald Wayne in 1976, is a tech giant renowned for its iconic products. Apple's product lineup includes the iPhone, iPad, Mac computers, and the Apple Watch. They have a significant presence in the consumer electronics industry. With their sleek design and user-friendly interfaces, Apple products are beloved by millions worldwide. The company is also known for its software ecosystem, including the iOS and macOS operating systems."
+    ],
+    "latest_news": [
+      "Apple continues to innovate, with the introduction of the M1 chip, powering their latest Macs. The company is expanding its services portfolio, including Apple Music, Apple TV+, and the Apple Arcade gaming platform. They are committed to sustainability and have made strides in reducing their carbon footprint across their operations."
+    ],
+    "industry_trends": [
+      "Wearables and smart home devices are expected to be key growth areas. Discuss any experience with technologies like Apple Watch, HomePod, and CarPlay.",
+      "Apple's focus on custom silicon could give it performance and cost advantages. Show interest in areas like chip design."
+    ]
+  },
+  "Amazon": {
+    "category": "Product-based",
+    "spread_across": [
+      "United States",
+      "Global"
+    ],
+    "working_domain": "E-Commerce, Cloud Computing",
+    "about_company": [
+      "Founded by Jeff Bezos in 1994, Amazon has transformed the way people shop online. It started as an online bookstore and has grown into one of the world's largest e-commerce and cloud computing companies. Amazon Web Services (AWS) provides scalable cloud solutions to businesses. The company is known for its customer-centric approach and innovative services like Amazon Prime and Alexa."
+    ],
+    "latest_news": [
+      "Amazon's e-commerce business has thrived, especially during the COVID-19 pandemic, as more people turned to online shopping. AWS continues to dominate the cloud computing market. The company is investing in renewable energy and aims to be carbon-neutral by 2040. Amazon is also exploring drone delivery technology."
+    ],
+    "industry_trends": [
+      "Voice-based interfaces and virtual assistants like Alexa are gaining adoption. Discuss experience designing conversational AI solutions.",
+      "With rise of e-commerce, logistics technology is critical. Show interest in innovations in supply chain management."
+    ]
+  },
+  "Alphabet Inc. (Google)": {
+    "category": "Product-based",
+    "spread_across": [
+      "United States",
+      "Global"
+    ],
+    "working_domain": "Technology",
+    "about_company": [
+      "Alphabet Inc. is the parent company of Google. Founded by Larry Page and Sergey Brin, Google is known for its search engine, advertising technologies, and a wide range of software and hardware products. Google's mission is to organize the world's information and make it universally accessible and useful."
+    ],
+    "latest_news": [
+      "Google continues to dominate the search engine market and is a leader in online advertising. The company is expanding into areas like self-driving cars (Waymo), cloud computing (Google Cloud), and hardware (Pixel phones). Google is also focused on sustainability, pledging to operate on carbon-free energy 24/7 by 2030."
+    ],
+    "industry_trends": [
+      "There is growing demand for talent with skills in DevOps, site reliability engineering, and cloud architecture.",
+      "Discuss your experience with big data pipelines, analytics, and machine learning platforms like TensorFlow."
+    ]
+  },
+  "Tesla": {
+    "category": "Product-based",
+    "spread_across": [
+      "United States",
+      "Global"
+    ],
+    "working_domain": "Automotive, Clean Energy",
+    "about_company": [
+      "Tesla, Inc., led by Elon Musk, is at the forefront of electric vehicle (EV) innovation. The company designs and manufactures EVs, battery storage systems, and solar products. Tesla's electric cars, like the Model S and Model 3, have gained widespread attention for their performance and sustainability."
+    ],
+    "latest_news": [
+      "Tesla has made significant advancements in autonomous driving technology, with features like Autopilot and Full Self-Driving (FSD). The company's Gigafactories are producing batteries at scale. Tesla aims to accelerate the world's transition to sustainable energy with its products and initiatives."
+    ],
+    "industry_trends": [
+      "Sustainability is a priority for many companies today. Emphasize any experience you have with renewable energy or EVs.",
+      "Autonomous driving technology is advancing rapidly. Show interest in leading developments like computer vision and sensor fusion."
+    ]
+  },
+  "Facebook": {
+    "category": "Product-based",
+    "spread_across": [
+      "United States",
+      "Global"
+    ],
+    "working_domain": "Social Media, Technology",
+    "about_company": [
+      "Facebook, Inc., founded by Mark Zuckerberg in 2004, is a social media giant. Facebook's platform includes the Facebook app, Instagram, WhatsApp, and Oculus VR. It connects billions of people globally and offers various advertising and communication services."
+    ],
+    "latest_news": [
+      "Facebook is focused on user privacy and security. They are developing augmented and virtual reality technologies through Oculus. The company also invests in AI research and has introduced the Libra cryptocurrency project (now Diem). Facebook has faced regulatory scrutiny related to its market dominance."
+    ],
+    "industry_trends": [
+      "Social media and digital advertising are evolving rapidly. Discuss your skills in areas like data analytics, personalization, campaign measurement.",
+      "Social platforms are under scrutiny for misinformation and data ethics. Share thoughts on content moderation and transparency."
+    ]
+  },
+  "IBM": {
+    "category": "Product-based",
+    "spread_across": [
+      "United States",
+      "Global"
+    ],
+    "working_domain": "Information Technology",
+    "about_company": [
+      "IBM (International Business Machines Corporation) is a multinational technology company founded in 1911. IBM is known for its contributions to computer hardware, software, and services. The company offers a wide range of technology solutions, including AI, cloud computing, and blockchain."
+    ],
+    "latest_news": [
+      "IBM is actively involved in quantum computing research. They acquired Red Hat, a leading open-source software provider, to expand their hybrid cloud offerings. IBM has a strong legacy in innovation and continues to drive advancements in the tech industry."
+    ],
+    "industry_trends": [
+      "Quantum computing promises major leaps in computational power. Discuss any coursework or reading you've done in this emerging domain.",
+      "With rise of cloud-native platforms, containerization and Kubernetes are key skills. Share any hands-on experience with these."
+    ]
+  },
+  "Oracle Corporation": {
+    "category": "Product-based",
+    "spread_across": [
+      "United States",
+      "Global"
+    ],
+    "working_domain": "Information Technology",
+    "about_company": [
+      "Oracle Corporation, founded in 1977 by Larry Ellison, Bob Miner, and Ed Oates, specializes in database software and cloud computing technologies. Oracle's products and services are widely used by businesses and organizations for data management and enterprise solutions."
+    ],
+    "latest_news": [
+      "Oracle has expanded its cloud infrastructure and autonomous database services. The company is known for its acquisitions of technology companies. Oracle is also involved in AI and machine learning initiatives to enhance its software offerings."
+    ],
+    "industry_trends": [
+      "AI-driven insights and automation are transforming enterprise data platforms. Discuss experience with analytics, ML, or conversational interfaces.",
+      "As multi-cloud strategies grow, skills in orchestration and management tools like Kubernetes are prized."
+    ]
+  },
+  "Cisco Systems, Inc.": {
+    "category": "Product-based",
+    "spread_across": [
+      "United States",
+      "Global"
+    ],
+    "working_domain": "Networking, Information Technology",
+    "about_company": [
+      "Cisco Systems, Inc., founded in 1984 by Leonard Bosack and Sandy Lerner, is a networking technology company. Cisco specializes in designing, manufacturing, and selling networking hardware, software, and telecommunications equipment."
+    ],
+    "latest_news": [
+      "Cisco provides a range of networking solutions, including routers, switches, and cybersecurity products. The company is at the forefront of technologies like 5G and edge computing. Cisco's innovations play a crucial role in connecting the digital world."
+    ],
+    "industry_trends": [
+      "Network virtualization and software-defined networking are top emerging tech. Share any exposure to tools like NSX.",
+      "With rise of IoT, edge computing is increasingly critical. Discuss how you can contribute."
+    ]
+  },
+  "Johnson & Johnson": {
+    "category": "Product-based",
+    "spread_across": [
+      "United States",
+      "Global"
+    ],
+    "working_domain": "Pharmaceuticals, Medical Devices",
+    "about_company": [
+      "Johnson & Johnson, founded in 1886, is a multinational corporation focused on pharmaceuticals, medical devices, and consumer packaged goods. Known for iconic brands like Band-Aid, Tylenol, and Neutrogena."
+    ],
+    "latest_news": [
+      "Johnson & Johnson is actively researching and developing treatments and vaccines for COVID-19. The company continues to expand through new partnerships and acquisitions."
+    ],
+    "industry_trends": [
+      "Digital health startups are disrupting the status quo. Discuss how legacy firms can adapt and innovate.",
+      "With aging populations, companies seek experts in genomics, biomarkers, and precision medicine."
+    ]
+  },
+  "JPMorgan Chase": {
+    "category": "Service-based",
+    "spread_across": [
+      "United States",
+      "Global"
+    ],
+    "working_domain": "Financial Services",
+    "about_company": [
+      "JPMorgan Chase is one of the oldest and largest banking institutions, offering consumer and commercial financial services globally. The company was formed in 2000 after the merger of J.P. Morgan & Co. and Chase Manhattan Bank."
+    ],
+    "latest_news": [
+      "JPMorgan Chase has invested heavily in its digital banking capabilities. Recently, the firm has faced billions in losses from wrongway derivatives bets."
+    ],
+    "industry_trends": [
+      "Fintech disruptions are pushing big banks to digitally transform. Discuss tools and strategies to compete.",
+      "Cybersecurity and risk management have become top priorities for financial institutions."
+    ]
+  },
+  "Walmart": {
+    "category": "Product-based",
+    "spread_across": [
+      "United States",
+      "Global"
+    ],
+    "working_domain": "Retail",
+    "about_company": [
+      "Walmart Inc. is an American multinational retail corporation that operates a chain of hypermarkets, discount department stores, and grocery stores."
+    ],
+    "latest_news": [
+      "Walmart continues to evolve its ecommerce strategy to compete with Amazon. The company has focused on improving its technology capabilities."
+    ],
+    "industry_trends": [
+      "Omnichannel retail requires advanced analytics, automation, and supply chain integration.",
+      "Sustainability is increasingly important. Share experience with initiatives to reduce waste or environmental impact."
+    ]
+  },
+  "UnitedHealth Group": {
+    "category": "Service-based",
+    "spread_across": [
+      "United States"
+    ],
+    "working_domain": "Healthcare, Insurance",
+    "about_company": [
+      "UnitedHealth Group is an American for-profit managed health care company based in Minnesota. It offers health care products and insurance services."
+    ],
+    "latest_news": [
+      "UnitedHealth has been active in addressing the COVID-19 crisis. The company continues to grow through acquisitions and expanding services."
+    ],
+    "industry_trends": [
+      "Value-based care and risk-sharing arrangements are transforming business models.",
+      "Discuss use of data analytics and AI to improve population health outcomes."
+    ]
+  },
+  "Berkshire Hathaway": {
+    "category": "Investment",
+    "spread_across": [
+      "United States"
+    ],
+    "working_domain": "Conglomerate",
+    "about_company": [
+      "Berkshire Hathaway is an American multinational conglomerate holding company led by chairman and CEO Warren Buffett. It owns businesses across insurance, railroads, utilities and more."
+    ],
+    "latest_news": [
+      "Berkshire Hathaway made a $10 billion investment in Occidental Petroleum. The company continues to search for major acquisition targets."
+    ],
+    "industry_trends": [
+      "Flagging growth drives shifts in capital allocation strategy at conglomerates.",
+      "ESG considerations are increasingly important in assessing investments."
+    ]
+  },
+  "Visa Inc.": {
+    "category": "Service-based",
+    "spread_across": [
+      "United States",
+      "Global"
+    ],
+    "working_domain": "Financial Services",
+    "about_company": [
+      "Visa Inc. operates as a payments technology company worldwide. It facilitates electronic funds transfers throughout the world, most commonly through Visa-branded credit cards, debit cards and prepaid cards."
+    ],
+    "latest_news": [
+      "Visa completed the acquisition of Currencycloud, which provides cross-border payment services. The company aims to expand its payment network globally."
+    ],
+    "industry_trends": [
+      "Digital payments continue rapid growth with cashless adoption. Discuss related technology.",
+      "Fraud detection and risk management are pivotal for payment platforms."
+    ]
+  },
+  "NVIDIA Corporation": {
+    "category": "Product-based",
+    "spread_across": [
+      "United States",
+      "Global"
+    ],
+    "working_domain": "Technology Hardware",
+    "about_company": [
+      "NVIDIA Corporation invents and manufactures graphics processing units (GPUs) and computer systems for the gaming and professional markets."
+    ],
+    "latest_news": [
+      "NVIDIA is a leader in graphics processing and artificial intelligence. The company recently terminated its acquisition bid for ARM Holdings."
+    ],
+    "industry_trends": [
+      "Graphics processors transform workloads like AI, visualization, IoT. Discuss skills.",
+      "Acquisitions race as firms compete in key tech segments like self-driving cars."
+    ]
+  },
+  "Procter & Gamble": {
+    "category": "Product-based",
+    "spread_across": [
+      "United States",
+      "Global"
+    ],
+    "working_domain": "Consumer Goods",
+    "about_company": [
+      "Procter & Gamble is an American multinational consumer goods corporation that provides consumer packaged goods worldwide. Brands include Tide, Gillette, Pampers, etc."
+    ],
+    "latest_news": [
+      "P&G aims to improve diversity and sustainability across its business. The company is increasing investments in its skincare and healthcare business units."
+    ],
+    "industry_trends": [
+      "Digital marketing and e-commerce are critical growth drivers for CPG brands.",
+      "Sustainable manufacturing and ethical sourcing are higher priorities."
+    ]
+  },
+  "AT&T": {
+    "category": "Service-based",
+    "spread_across": [
+      "United States"
+    ],
+    "working_domain": "Telecommunications",
+    "about_company": [
+      "AT&T Inc. is an American multinational conglomerate holding company, Delaware-registered but based in Texas. It is the world's largest telecommunications company and provides mobile telephone services."
+    ],
+    "latest_news": [
+      "AT&T plans to spin off WarnerMedia to merge it with Discovery, Inc. The company aims to strengthen its core connectivity business."
+    ],
+    "industry_trends": [
+      "5G rollout is a key priority. Discuss experience with wireless standards and networking.",
+      "As media consumption goes mobile, importance of high-performance streaming grows."
+    ]
+  },
+  "Wells Fargo": {
+    "category": "Service-based",
+    "spread_across": [
+      "United States"
+    ],
+    "working_domain": "Financial Services",
+    "about_company": [
+      "Wells Fargo is an American multinational financial services company with corporate headquarters in San Francisco, California. It provides banking, investment, and mortgage products."
+    ],
+    "latest_news": [
+      "Wells Fargo has been marred by scandals related to its sales practices but aims to rebuild customer trust. The bank is investing in digital capabilities."
+    ],
+    "industry_trends": [
+      "Banks enhance cybersecurity and compliance procedures to avoid reputational risks.",
+      "Personalization and digital experiences are key differentiators in retail banking."
+    ]
+  },
+  "Coca-Cola": {
+    "category": "Product-based",
+    "spread_across": [
+      "United States",
+      "Global"
+    ],
+    "working_domain": "Beverages",
+    "about_company": [
+      "The Coca-Cola Company is an American multinational beverage corporation best known for its flagship product Coca-Cola. It offers over 500 brands worldwide."
+    ],
+    "latest_news": [
+      "Coca-Cola aims to diversify into new drink categories. The company is expanding its popular coffee-infused Coke brand globally."
+    ],
+    "industry_trends": [
+      "Consumer preferences shifting to healthier, low-sugar beverages.",
+      "Sustainability initiatives target plastic use, recycling, and eco-friendly packaging."
+    ]
+  },
+  "PepsiCo": {
+    "category": "Product-based",
+    "spread_across": [
+      "United States",
+      "Global"
+    ],
+    "working_domain": "Food and Beverages",
+    "about_company": [
+      "PepsiCo is an American multinational food, snack, and beverage corporation. Brands include Pepsi, Frito-Lay, Gatorade, Quaker Oats, and Tropicana."
+    ],
+    "latest_news": [
+      "PepsiCo continues to expand into healthier offerings while strengthening its core brands. The company aims to reduce virgin plastic use across its portfolio."
+    ],
+    "industry_trends": [
+      "Population growth and rising incomes in emerging markets drive growth.",
+      "Digital commerce and personalized customer engagement are imperatives."
+    ]
+  },
+  "Intel Corporation": {
+    "category": "Product-based",
+    "spread_across": [
+      "United States",
+      "Global"
+    ],
+    "working_domain": "Semiconductors",
+    "about_company": [
+      "Intel Corporation is an American multinational corporation and technology company. It is the world's largest semiconductor chip manufacturer by revenue."
+    ],
+    "latest_news": [
+      "Intel recently broke ground on two new chip fabrication plants in the U.S. The company aims to regain leadership in semiconductor manufacturing."
+    ],
+    "industry_trends": [
+      "Geopolitics and supply chain issues make domestic chip fabrication crucial.",
+      "Discuss your experience with advances like 3D packaging and new materials."
+    ]
+  },
+  "Home Depot": {
+    "category": "Product-based",
+    "spread_across": [
+      "United States"
+    ],
+    "working_domain": "Retail",
+    "about_company": [
+      "The Home Depot is the largest home improvement retailer in the United States. It offers tools, construction products, appliances, and services."
+    ],
+    "latest_news": [
+      "Home Depot continues expanding its supply chain to meet high demand. The company aims to improve its online experience to better compete."
+    ],
+    "industry_trends": [
+      "Digital channels and data analytics help create seamless omnichannel experiences.",
+      "Sustainability initiatives aim to reduce environmental footprint of operations."
+    ]
+  },
+  "McKesson Corporation": {
+    "category": "Service-based",
+    "spread_across": [
+      "United States"
+    ],
+    "working_domain": "Healthcare",
+    "about_company": [
+      "McKesson Corporation is an American pharmaceutical distribution and healthcare IT company. It distributes generic and branded pharmaceutical drugs across the world."
+    ],
+    "latest_news": [
+      "McKesson aims to streamline operations and cut costs to improve margins. The company is expanding its healthcare IT and data services."
+    ],
+    "industry_trends": [
+      "Healthcare players harness technology and data analytics to improve care delivery.",
+      "Value-based reimbursements and risk-sharing models spur business model changes."
+    ]
+  },
+  "Bank of America": {
+    "category": "Service-based",
+    "spread_across": [
+      "United States"
+    ],
+    "working_domain": "Financial Services",
+    "about_company": [
+      "Bank of America is an American multinational investment bank and financial services holding company. It provides banking and financial services to individual consumers, businesses, etc."
+    ],
+    "latest_news": [
+      "Bank of America plans to raise its minimum wage to $25/hour by 2025. The bank aims to improve digital banking and strengthen wealth management."
+    ],
+    "industry_trends": [
+      "Digital transformation is necessary to meet customer expectations and compete.",
+      "Cybersecurity build-up essential amid rising online fraud."
+    ]
+  },
+  "Verizon": {
+    "category": "Service-based",
+    "spread_across": [
+      "United States"
+    ],
+    "working_domain": "Telecommunications",
+    "about_company": [
+      "Verizon Communications is an American multinational telecommunications conglomerate. It offers wireless products and services across mobile networks and fixed/broadband connections."
+    ],
+    "latest_news": [
+      "Verizon continues building out its 5G network coverage across the U.S. The company aims to capitalize on emerging technologies like smart cities."
+    ],
+    "industry_trends": [
+      "5G and fiber drive next wave of growth in connectivity.",
+      "Media and advertising capabilities strengthen with acquisitions."
+    ]
+  },
+  "Target Corporation": {
+    "category": "Product-based",
+    "spread_across": [
+      "United States"
+    ],
+    "working_domain": "Retail",
+    "about_company": [
+      "Target Corporation is an American retail corporation. It is the 8th-largest retailer in the United States. Target sells various products including beauty, household essentials, etc."
+    ],
+    "latest_news": [
+      "Target plans to spend $4 billion annually to expand its e-commerce business. The retailer aims to open more small-format stores."
+    ],
+    "industry_trends": [
+      "Omnichannel experiences keep customers engaged across channels.",
+      "Supply chains must handle volatility and disruptions smoothly."
+    ]
+  },
+  "CVS Health": {
+    "category": "Service-based",
+    "spread_across": [
+      "United States"
+    ],
+    "working_domain": "Healthcare",
+    "about_company": [
+      "CVS Health is an American healthcare company that owns pharmacy chain CVS Pharmacy. It also provides health insurance services and walk-in medical clinics."
+    ],
+    "latest_news": [
+      "CVS Health acquired healthcare provider Signify Health to expand home-based care. The company aims to increase access to healthcare services."
+    ],
+    "industry_trends": [
+      "Retail healthcare companies aim to improve outcomes and lower costs.",
+      "Digital health startups pose competition prompting strategic moves."
+    ]
+  },
+  "ExxonMobil": {
+    "category": "Product-based",
+    "spread_across": [
+      "United States",
+      "Global"
+    ],
+    "working_domain": "Oil & Gas",
+    "about_company": [
+      "Exxon Mobil Corporation is an American multinational oil and gas corporation. It is one of the largest companies in the industry and descends from John D. Rockefeller's Standard Oil."
+    ],
+    "latest_news": [
+      "ExxonMobil aims to increase crude oil production in the lucrative Permian basin. The company has been under pressure to invest more in clean energy."
+    ],
+    "industry_trends": [
+      "Low-carbon energy transition shapes long-term strategy.",
+      "Geopolitics continue to drive oil price volatility."
+    ]
+  },
+  "Costco": {
+    "category": "Product-based",
+    "spread_across": [
+      "United States",
+      "Global"
+    ],
+    "working_domain": "Retail",
+    "about_company": [
+      "Costco Wholesale Corporation operates membership warehouses worldwide that carry quality, brand name merchandise at low prices. Memberships provide access to stores."
+    ],
+    "latest_news": [
+      "Costco plans to open 28 new warehouse locations in 2023. The company aims to attract new members and offer more value-oriented products."
+    ],
+    "industry_trends": [
+      "Grocery delivery and curbside pickup become competitive necessities.",
+      "Personalization and loyalty programs boost engagements."
+    ]
+  },
+  "Raytheon Technologies": {
+    "category": "Product-based",
+    "spread_across": [
+      "United States",
+      "Global"
+    ],
+    "working_domain": "Aerospace & Defense",
+    "about_company": [
+      "Raytheon Technologies Corporation is an American multinational aerospace and defense conglomerate. It specializes in advanced systems and services in various domains."
+    ],
+    "latest_news": [
+      "Raytheon continues to see strong demand for its defense systems given geopolitical tensions. The company was formed by the merger of Raytheon Co. and United Technologies."
+    ],
+    "industry_trends": [
+      "Modernization of defense systems employs latest tech like AI and cybersecurity.",
+      "Commercial aerospace recovers gradually as air travel rebounds."
+    ]
+  },
+  "Amgen Inc.": {
+    "category": "Product-based",
+    "spread_across": [
+      "United States",
+      "Global"
+    ],
+    "working_domain": "Pharmaceuticals",
+    "about_company": [
+      "Amgen Inc. is an American multinational biopharmaceutical company headquartered in Thousand Oaks, California. It focuses on areas like human therapeutics and cardiovascular disease."
+    ],
+    "latest_news": [
+      "Amgen received FDA approval for its psoriasis drug Otezla, expanding its portfolio. The company continues to invest significantly in R&D."
+    ],
+    "industry_trends": [
+      "Gene and cell therapies represent potential cure for diseases.",
+      "Partnerships and M&A supplement in-house R&D pipelines."
+    ]
+  },
+  "Honeywell": {
+    "category": "Product-based",
+    "spread_across": [
+      "United States",
+      "Global"
+    ],
+    "working_domain": "Conglomerate",
+    "about_company": [
+      "Honeywell International Inc. is an American publicly traded, multinational conglomerate organization. It primarily operates in four areas: aerospace, building technologies, etc."
+    ],
+    "latest_news": [
+      "Honeywell launched a new business unit focused on sustainable technology solutions. The company aims to be carbon neutral in its operations and facilities by 2035."
+    ],
+    "industry_trends": [
+      "IoT, AI, and cloud drive connected, autonomous operations.",
+      "Sustainability is a competitive advantage in manufacturing."
+    ]
+  },
+  "Phillips 66": {
+    "category": "Product-based",
+    "spread_across": [
+      "United States"
+    ],
+    "working_domain": "Oil Refining",
+    "about_company": [
+      "Phillips 66 is an American multinational energy company dual headquartered in Houston and Westchase, Texas. The company operates petroleum refining and marketing businesses."
+    ],
+    "latest_news": [
+      "Phillips 66 increased its quarterly dividend by 5%. But the company missed earnings forecasts due to weakened fuel margins."
+    ],
+    "industry_trends": [
+      "Shift to electric vehicles long-term threat to fuel demand.",
+      "Refiners adapt facilities to produce low carbon biofuels."
+    ]
+  },
+  "United Parcel Service": {
+    "category": "Service-based",
+    "spread_across": [
+      "United States",
+      "Global"
+    ],
+    "working_domain": "Logistics",
+    "about_company": [
+      "United Parcel Service is an American multinational package delivery and supply chain management company. UPS delivers packages to over 220 countries and territories worldwide."
+    ],
+    "latest_news": [
+      "UPS plans to expand its drone delivery service. The company aims to handle more last-mile deliveries amid rising e-commerce demand."
+    ],
+    "industry_trends": [
+      "Automation improves efficiency in facilities and route optimization.",
+      "Sustainability goals aim to reduce carbon footprint."
+    ]
+  },
+  "Eli Lilly and Company": {
+    "category": "Product-based",
+    "spread_across": [
+      "United States",
+      "Global"
+    ],
+    "working_domain": "Pharmaceuticals",
+    "about_company": [
+      "Eli Lilly and Company is a global pharmaceutical company headquartered in Indianapolis, Indiana. It produces medications in areas like endocrinology, oncology, etc."
+    ],
+    "latest_news": [
+      "Eli Lilly received FDA approval for Mounjaro, its promising type 2 diabetes drug. The company is investing heavily in R&D and acquisitions."
+    ]
+  },
+  "Intel": {
+    "category": "Product-based",
+    "spread_across": [
+      "United States",
+      "Global"
+    ],
+    "working_domain": "Semiconductors",
+    "about_company": [
+      "Intel Corporation is an American multinational corporation and technology company that specializes in designing and manufacturing semiconductor computer circuits."
+    ],
+    "industry_trends": [
+      "Drug pricing policies and reforms affect profitability.",
+      "Digital transformation improvesclinical trials and drug discovery."
+    ]
+  },
+  "Cisco": {
+    "category": "Product-based",
+    "spread_across": [
+      "United States",
+      "Global"
+    ],
+    "working_domain": "Networking Equipment",
+    "about_company": [
+      "Cisco Systems, Inc. is an American multinational technology conglomerate developing and selling networking hardware, software, telecom equipment and other high-technology services."
+    ],
+    "latest_news": [
+      "Cisco focuses on cloud-delivered software and subscription-based business models for future growth."
+    ],
+    "industry_trends": [
+      "Network virtualization and SDN are key to adapting to cloud and hyperscale environments.",
+      "With rise of IoT devices, edge computing is increasingly critical. Share expertise."
+    ]
+  },
+  "Nvidia": {
+    "category": "Product-based",
+    "spread_across": [
+      "United States",
+      "Global"
+    ],
+    "working_domain": "Semiconductors",
+    "about_company": [
+      "NVIDIA is an American multinational technology company that designs graphics processing units for the gaming and professional markets, as well as system on a chip units for data centers."
+    ],
+    "latest_news": [
+      "Nvidia aims to expand into new high-growth markets like AI, self-driving cars, and the metaverse."
+    ],
+    "industry_trends": [
+      "GPUs are transforming workloads like AI, visualization, IoT. Discuss relevant skills.",
+      "Merger deals continue as firms vie for leadership in key tech segments."
+    ]
+  },
+  "Netflix": {
+    "category": "Product-based",
+    "spread_across": [
+      "United States",
+      "Global"
+    ],
+    "working_domain": "Entertainment",
+    "about_company": [
+      "Netflix, Inc. is an American subscription streaming service and production company providing streaming media and video on demand."
+    ],
+    "latest_news": [
+      "Netflix plans to crack down on password sharing and aims to diversify content as competition intensifies."
+    ],
+    "industry_trends": [
+      "As streaming matures, personalization and niche content are differentiators.",
+      "Mobile viewing patterns prompt innovations in encoding, compression, etc."
+    ]
+  },
+  "Salesforce": {
+    "category": "Product-based",
+    "spread_across": [
+      "United States",
+      "Global"
+    ],
+    "working_domain": "Software",
+    "about_company": [
+      "Salesforce is an American cloud-based software company providing customer relationship management service and other enterprise applications focused on customer service, marketing automation, etc."
+    ],
+    "latest_news": [
+      "Salesforce completed the acquisition of Slack. It aims to provide integrated CRM solutions to customers."
+    ],
+    "industry_trends": [
+      "Buyers expect contextual, personalized experiences across channels.",
+      "Vertical clouds gain traction by tailoring solutions for specific industries."
+    ]
+  },
+  "Accenture": {
+    "category": "Service-based",
+    "spread_across": [
+      "Global"
+    ],
+    "working_domain": "Consulting",
+    "about_company": [
+      "Accenture is a global professional services company providing services in strategy, consulting, technology and operations to clients in various industries and across geographies."
+    ],
+    "latest_news": [
+      "Accenture continues to boost its digital, cloud and security capabilities through acquisitions. It aims to help clients reinvent their businesses."
+    ],
+    "industry_trends": [
+      "Digital transformation, cloud, cybersecurity are key priorities for enterprises.",
+      "Demand grows for change management services as new tech is adopted."
+    ]
+  },
+  "McKinsey": {
+    "category": "Service-based",
+    "spread_across": [
+      "United States",
+      "Global"
+    ],
+    "working_domain": "Consulting",
+    "about_company": [
+      "McKinsey & Company is an American worldwide management consulting firm that serves leading businesses, governments, non-profit organizations, and institutions."
+    ],
+    "latest_news": [
+      "McKinsey plans to cut about 2,000 jobs as it faces economic challenges. It aims to restructure some parts of the organization."
+    ],
+    "industry_trends": [
+      "Virtual collaboration and digital delivery are now the norm.",
+      "Sustainability consulting sees demand as ESG considerations grow."
+    ]
+  },
+  "Deloitte": {
+    "category": "Service-based",
+    "spread_across": [
+      "United States",
+      "Global"
+    ],
+    "working_domain": "Consulting",
+    "about_company": [
+      "Deloitte Touche Tohmatsu Limited is one of the 'Big Four' accounting organizations and provides audit, consulting, financial advisory, risk management, and tax services."
+    ],
+    "latest_news": [
+      "Deloitte continues to enhance its technology capabilities and focus on areas like digital transformation, cloud, and cyber."
+    ],
+    "industry_trends": [
+      "Digital transformation projects prompt need for change management expertise.",
+      "Companies seek help navigating increased regulatory requirements."
+    ]
+  },
+  "EY": {
+    "category": "Service-based",
+    "spread_across": [
+      "Global"
+    ],
+    "working_domain": "Consulting",
+    "about_company": [
+      "Ernst & Young is a multinational professional services network and one of the Big Four accounting firms providing assurance, consulting, strategy, taxation and transaction advisory services."
+    ],
+    "latest_news": [
+      "EY plans to split its audit and consulting units into two separate companies as regulatory pressures grow."
+    ],
+    "industry_trends": [
+      "Digital audit techniques leverage data analytics, automation and AI.",
+      "Cryptocurrencies and blockchain prompt new approaches to assurance services."
+    ]
+  },
+  "KPMG": {
+    "category": "Service-based",
+    "spread_across": [
+      "Global"
+    ],
+    "working_domain": "Consulting",
+    "about_company": [
+      "KPMG is a global network of professional firms providing audit, tax and advisory services. It is one of the Big Four accounting organizations."
+    ],
+    "latest_news": [
+      "KPMG aims to significantly increase headcount in India to expand its professional services capabilities."
+    ],
+    "industry_trends": [
+      "Tax reform and increased regulation require expertise to navigate.",
+      "ESG reporting grows in importance as stakeholders seek transparency."
+    ]
+  },
+  "PwC": {
+    "category": "Service-based",
+    "spread_across": [
+      "Global"
+    ],
+    "working_domain": "Consulting",
+    "about_company": [
+      "PricewaterhouseCoopers is a multinational professional services network of firms providing consulting and auditing services. PwC is the largest professional services firm in the world."
+    ],
+    "latest_news": [
+      "PwC plans to invest $12 billion over five years in recruiting, skilling up, and acquiring capabilities."
+    ],
+    "industry_trends": [
+      "Adopting digital platforms has accelerated across accounting services.",
+      "Consulting arms drive growth through technology implementation work."
+    ]
+  },
+  "JP Morgan": {
+    "category": "Service-based",
+    "spread_across": [
+      "United States",
+      "Global"
+    ],
+    "working_domain": "Banking",
+    "about_company": [
+      "JPMorgan Chase & Co. is an American multinational investment bank and financial services holding company headquartered in New York City."
+    ],
+    "latest_news": [
+      "JP Morgan aims to compete aggressively with fintech disruptors through digital transformation of its own operations."
+    ],
+    "industry_trends": [
+      "Digital banking and payments technologies are critical to meet customer demand.",
+      "Cybersecurity and risk management key focus areas amid rising fraud."
+    ]
+  },
+  "Mastercard": {
+    "category": "Service-based",
+    "spread_across": [
+      "United States",
+      "Global"
+    ],
+    "working_domain": "Financial Services",
+    "about_company": [
+      "Mastercard Incorporated is an American multinational financial services corporation headquartered in New York that facilitates electronic payments between banks, merchants, consumers, businesses, etc."
+    ],
+    "latest_news": [
+      "Mastercard is expanding cryptocurrency and open banking capabilities to diversify into new areas."
+    ],
+    "industry_trends": [
+      "Contactless and mobile payments see strong growth.",
+      "Data analytics and AI drive improved customer insights and security."
+    ]
+  },
+  "Visa": {
+    "category": "Service-based",
+    "spread_across": [
+      "United States",
+      "Global"
+    ],
+    "working_domain": "Financial Services",
+    "about_company": [
+      "Visa Inc. is an American multinational financial services corporation facilitating electronic funds transfers across the world, most commonly through Visa-branded credit cards, debit cards and prepaid cards."
+    ],
+    "latest_news": [
+      "Visa aims to further grow its credit and debit card networks as more transactions shift from cash to digital payments."
+    ],
+    "industry_trends": [
+      "Digital payments rapidly gain share from cash transactions.",
+      "Partnerships expand capabilities in areas like crypto, open banking."
+    ]
+  },
+  "American Express": {
+    "category": "Service-based",
+    "spread_across": [
+      "United States",
+      "Global"
+    ],
+    "working_domain": "Financial Services",
+    "about_company": [
+      "American Express is an American multinational financial services corporation headquartered in New York City. It provides services like credit cards, charge cards, traveler's cheques, etc."
+    ],
+    "latest_news": [
+      "Amex focuses on expanding its international presence and attracting younger customers."
+    ],
+    "industry_trends": [
+      "Rewards programs and premium benefits differentiate card offerings.",
+      "Social media and digital marketing engage customers and drive growth."
+    ]
+  },
+  "Goldman Sachs": {
+    "category": "Service-based",
+    "spread_across": [
+      "United States",
+      "Global"
+    ],
+    "working_domain": "Investment Banking",
+    "about_company": [
+      "The Goldman Sachs Group, Inc. is an American multinational investment bank and financial services company headquartered in New York City."
+    ],
+    "latest_news": [
+      "Goldman Sachs aims to deploy more capital into consumer banking after its acquisition of GreenSky."
+    ],
+    "industry_trends": [
+      "Digital transformation improves efficiency and customer service.",
+      "Industry consolidation continues amid economic uncertainty."
+    ]
+  },
+  "Morgan Stanley": {
+    "category": "Service-based",
+    "spread_across": [
+      "United States",
+      "Global"
+    ],
+    "working_domain": "Investment Banking",
+    "about_company": [
+      "Morgan Stanley is an American multinational investment bank and financial services company headquartered in New York City."
+    ],
+    "latest_news": [
+      "Morgan Stanley continues to shift mix toward fee-based businesses like wealth and investment management."
+    ],
+    "industry_trends": [
+      "Digital transformation improves efficiency and customer service.",
+      "Industry consolidation continues amid economic uncertainty."
+    ]
+  }
+}
