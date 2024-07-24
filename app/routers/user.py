@@ -28,7 +28,7 @@ async def signup(user: UserCreate, session: AsyncSession = Depends(get_async_ses
     print(f"User {new_user.username} created with hashed password: {new_user.hashed_password}")
     return new_user
 
-@router.post("/login", response_model=Token)
+@router.post("/token", response_model=Token)
 async def login(form_data: OAuth2PasswordRequestForm = Depends(), session: AsyncSession = Depends(get_async_session)):
     print(f"Logging in user: {form_data.username} with password: {form_data.password}")
     user = await authenticate_user(session, form_data.username, form_data.password)

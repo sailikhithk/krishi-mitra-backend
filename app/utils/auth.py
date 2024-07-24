@@ -21,8 +21,8 @@ def get_password_hash(password):
     print(f"Hashing password: {password}")
     return pwd_context.hash(password)
 
-async def authenticate_user(session: AsyncSession, username: str, password: str):
-    result = await session.execute(select(User).where(User.username == username))
+async def authenticate_user(session: AsyncSession, identifier: str, password: str):
+    result = await session.execute(select(User).where((User.username == identifier) | (User.email == identifier)))
     user = result.scalars().first()
     if user:
         print(f"User found: {user.username} with hashed password: {user.hashed_password}")
