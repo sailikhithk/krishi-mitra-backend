@@ -1,13 +1,22 @@
 from pydantic import BaseModel
+from typing import Optional
+from datetime import datetime
 
-class SchemeCreate(BaseModel):
+class SchemeBase(BaseModel):
     name: str
     description: str
     eligibility: str
     benefits: str
 
-class SchemeResponse(SchemeCreate):
+class SchemeCreate(SchemeBase):
+    pass
+
+class SchemeUpdate(SchemeBase):
+    pass
+
+class SchemeRead(SchemeBase):
     id: int
+    created_at: datetime
 
     class Config:
-        orm_mode = True
+        from_attributes = True

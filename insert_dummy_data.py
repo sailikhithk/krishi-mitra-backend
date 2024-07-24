@@ -1,6 +1,6 @@
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.orm import sessionmaker, relationship, declarative_base
-from sqlalchemy import Column, Integer, String, Float, ForeignKey, DateTime, Boolean, Table
+from sqlalchemy import Column, Integer, String, Float, ForeignKey, DateTime, Boolean, Table, text
 from sqlalchemy.dialects.postgresql import insert
 from datetime import datetime
 from app.config import DATABASE_URL
@@ -16,8 +16,8 @@ Base = declarative_base()
 
 # Define association table for many-to-many relationship between User and Scheme
 user_scheme = Table('user_scheme', Base.metadata,
-    Column('user_id', Integer, ForeignKey('users.id')),
-    Column('scheme_id', Integer, ForeignKey('schemes.id'))
+    Column('user_id', Integer, ForeignKey('users.id'), primary_key=True),
+    Column('scheme_id', Integer, ForeignKey('schemes.id'), primary_key=True)
 )
 
 class User(Base):
@@ -93,140 +93,66 @@ class MarketPrice(Base):
     market = Column(String)
     recorded_at = Column(DateTime, default=datetime.utcnow)
 
-async def insert_or_update(session, model, data):
-    stmt = insert(model).values(**data)
-    update_dict = {c.name: getattr(stmt.excluded, c.name) for c in stmt.table.c}
-    stmt = stmt.on_conflict_do_update(
-        index_elements=['id'],  # This should be your unique constraint column(s)
-        set_=update_dict
-    )
-    await session.execute(stmt)
-
-async def insert_dummy_data():
+async def truncate_tables():
     async with async_session() as session:
         async with session.begin():
-            # Insert or update dummy users
-            await insert_or_update(session, User, {
-                'id': 1,
-                'username': "john_doe",
-                'email': "john@example.com",
-                'hashed_password': "hashed_password1"
-            })
-            await insert_or_update(session, User, {
-                'id': 2,
-                'username': "jane_doe",
-                'email': "jane@example.com",
-                'hashed_password': "hashed_password2"
-            })
+            tables = [User, SoilHealth, Bid, Scheme, WeatherData, MarketPrice]
+            for table in tables:
+                await session.execute(text(f'TRUNCATE TABLE {table.__table__.name} CASCADE'))
+            await session.execute(text('TRUNCATE TABLE user_scheme CASCADE'))
+        await session.commit()
 
-            # Fetch user ids
-            result = await session.execute(select(User).where(User.username == "john_doe"))
-            user1 = result.scalars().first()
+async def insert_data():
+    async with async_session() as session:
+        async with session.begin():
+            # Insert dummy users
+            await session.execute(insert(User).values([
+                {'id': 1, 'username': "john_doe", 'email': "john@example.com", 'hashed_password': "hashed_password1"},
+                {'id': 2, 'username': "jane_doe", 'email': "jane@example.com", 'hashed_password': "hashed_password2"}
+            ]))
 
-            result = await session.execute(select(User).where(User.username == "jane_doe"))
-            user2 = result.scalars().first()
+            # Insert dummy soil health data
+            await session.execute(insert(SoilHealth).values([
+                {'id': 1, 'user_id': 1, 'ph': 6.5, 'nitrogen': 0.3, 'phosphorus': 0.2, 'potassium': 0.5, 'organic_matter': 1.2},
+                {'id': 2, 'user_id': 2, 'ph': 7.0, 'nitrogen': 0.4, 'phosphorus': 0.3, 'potassium': 0.6, 'organic_matter': 1.3}
+            ]))
 
-            # Insert or update dummy soil health data
-            await insert_or_update(session, SoilHealth, {
-                'id': 1,
-                'user_id': user1.id,
-                'ph': 6.5,
-                'nitrogen': 0.3,
-                'phosphorus': 0.2,
-                'potassium': 0.5,
-                'organic_matter': 1.2
-            })
-            await insert_or_update(session, SoilHealth, {
-                'id': 2,
-                'user_id': user2.id,
-                'ph': 7.0,
-                'nitrogen': 0.4,
-                'phosphorus': 0.3,
-                'potassium': 0.6,
-                'organic_matter': 1.3
-            })
+            # Insert dummy bids
+            await session.execute(insert(Bid).values([
+                {'id': 1, 'user_id': 1, 'crop': "Wheat", 'quantity': 100.0, 'price': 200.0, 'status': "open"},
+                {'id': 2, 'user_id': 2, 'crop': "Corn", 'quantity': 150.0, 'price': 250.0, 'status': "closed"}
+            ]))
 
-            # Insert or update dummy bids
-            await insert_or_update(session, Bid, {
-                'id': 1,
-                'user_id': user1.id,
-                'crop': "Wheat",
-                'quantity': 100.0,
-                'price': 200.0,
-                'status': "open"
-            })
-            await insert_or_update(session, Bid, {
-                'id': 2,
-                'user_id': user2.id,
-                'crop': "Corn",
-                'quantity': 150.0,
-                'price': 250.0,
-                'status': "closed"
-            })
-
-            # Insert or update dummy schemes
-            await insert_or_update(session, Scheme, {
-                'id': 1,
-                'name': "Scheme A",
-                'description': "Description A",
-                'eligibility': "Eligibility A",
-                'benefits': "Benefits A"
-            })
-            await insert_or_update(session, Scheme, {
-                'id': 2,
-                'name': "Scheme B",
-                'description': "Description B",
-                'eligibility': "Eligibility B",
-                'benefits': "Benefits B"
-            })
+            # Insert dummy schemes
+            await session.execute(insert(Scheme).values([
+                {'id': 1, 'name': "Scheme A", 'description': "Description A", 'eligibility': "Eligibility A", 'benefits': "Benefits A"},
+                {'id': 2, 'name': "Scheme B", 'description': "Description B", 'eligibility': "Eligibility B", 'benefits': "Benefits B"}
+            ]))
 
             # Associate users with schemes
-            await insert_or_update(session, user_scheme, {
-                'user_id': user1.id,
-                'scheme_id': 1
-            })
-            await insert_or_update(session, user_scheme, {
-                'user_id': user2.id,
-                'scheme_id': 2
-            })
+            await session.execute(insert(user_scheme).values([
+                {'user_id': 1, 'scheme_id': 1},
+                {'user_id': 2, 'scheme_id': 2}
+            ]))
 
-            # Insert or update dummy weather data
-            await insert_or_update(session, WeatherData, {
-                'id': 1,
-                'location': "Location A",
-                'temperature': 25.5,
-                'humidity': 60.0,
-                'precipitation': 5.0,
-                'wind_speed': 10.0
-            })
-            await insert_or_update(session, WeatherData, {
-                'id': 2,
-                'location': "Location B",
-                'temperature': 22.0,
-                'humidity': 55.0,
-                'precipitation': 10.0,
-                'wind_speed': 15.0
-            })
+            # Insert dummy weather data
+            await session.execute(insert(WeatherData).values([
+                {'id': 1, 'location': "Location A", 'temperature': 25.5, 'humidity': 60.0, 'precipitation': 5.0, 'wind_speed': 10.0},
+                {'id': 2, 'location': "Location B", 'temperature': 22.0, 'humidity': 55.0, 'precipitation': 10.0, 'wind_speed': 15.0}
+            ]))
 
-            # Insert or update dummy market prices
-            await insert_or_update(session, MarketPrice, {
-                'id': 1,
-                'crop': "Wheat",
-                'price': 200.0,
-                'market': "Market A"
-            })
-            await insert_or_update(session, MarketPrice, {
-                'id': 2,
-                'crop': "Corn",
-                'price': 250.0,
-                'market': "Market B"
-            })
+            # Insert dummy market prices
+            await session.execute(insert(MarketPrice).values([
+                {'id': 1, 'crop': "Wheat", 'price': 200.0, 'market': "Market A"},
+                {'id': 2, 'crop': "Corn", 'price': 250.0, 'market': "Market B"}
+            ]))
 
         await session.commit()
 
-    print("Dummy data inserted or updated successfully.")
+async def main():
+    await truncate_tables()
+    await insert_data()
 
 if __name__ == "__main__":
     import asyncio
-    from sqlalchemy.future import select
-    asyncio.run(insert_dummy_data())
+    asyncio.run(main())

@@ -1,24 +1,50 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
+from app.database import get_async_session
 from app.models.bid import Bid
-from app.schemas.bid import BidCreate, BidResponse
-from app.database import get_session
+from app.schemas.bid import BidCreate, BidRead, BidUpdate
+from typing import List
 
 router = APIRouter()
 
-@router.post("/", response_model=BidResponse)
-async def create_bid(data: BidCreate, session: AsyncSession = Depends(get_session)):
-    bid = Bid(**data.dict())
-    session.add(bid)
-    await session.commit()
-    await session.refresh(bid)
-    return bid
+@router.get("/", response_model=List[BidRead])
+async def read_bids(skip: int = 0, limit: int = 10, session: AsyncSession = Depends(get_async_session)):
+    result = await session.execute(select(Bid).offset(skip).limit(limit))
+    bids = result.scalars().all()
+    return bids
 
-@router.get("/{bid_id}", response_model=BidResponse)
-async def get_bid(bid_id: int, session: AsyncSession = Depends(get_session)):
-    result = await session.execute(select(Bid).where(Bid.id == bid_id))
-    bid = result.scalars().first()
+@router.post("/", response_model=BidRead)
+async def create_bid(bid: BidCreate, session: AsyncSession = Depends(get_async_session)):
+    new_bid = Bid(**bid.dict())
+    session.add(new_bid)
+    await session.commit()
+    await session.refresh(new_bid)
+    return new_bid
+
+@router.get("/{bid_id}", response_model=BidRead)
+async def read_bid(bid_id: int, session: AsyncSession = Depends(get_async_session)):
+    bid = await session.get(Bid, bid_id)
     if not bid:
         raise HTTPException(status_code=404, detail="Bid not found")
     return bid
+
+@router.put("/{bid_id}", response_model=BidRead)
+async def update_bid(bid_id: int, bid: BidUpdate, session: AsyncSession = Depends(get_async_session)):
+    existing_bid = await session.get(Bid, bid_id)
+    if not existing_bid:
+        raise HTTPException(status_code=404, detail="Bid not found")
+    for key, value in bid.dict().items():
+        setattr(existing_bid, key, value)
+    await session.commit()
+    await session.refresh(existing_bid)
+    return existing_bid
+
+@router.delete("/{bid_id}")
+async def delete_bid(bid_id: int, session: AsyncSession = Depends(get_async_session)):
+    bid = await session.get(Bid, bid_id)
+    if not bid:
+        raise HTTPException(status_code=404, detail="Bid not found")
+    await session.delete(bid)
+    await session.commit()
+    return {"detail": "Bid deleted successfully"}

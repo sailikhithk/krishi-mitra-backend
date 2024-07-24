@@ -1,13 +1,23 @@
 from pydantic import BaseModel
+from typing import Optional
+from datetime import datetime
 
-class BidCreate(BaseModel):
+class BidBase(BaseModel):
+    user_id: int
     crop: str
     quantity: float
     price: float
     status: str
 
-class BidResponse(BidCreate):
+class BidCreate(BidBase):
+    pass
+
+class BidUpdate(BidBase):
+    pass
+
+class BidRead(BidBase):
     id: int
+    created_at: datetime
 
     class Config:
-        orm_mode = True
+        from_attributes = True

@@ -1,24 +1,50 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
+from app.database import get_async_session
 from app.models.scheme import Scheme
-from app.schemas.scheme import SchemeCreate, SchemeResponse
-from app.database import get_session
+from app.schemas.scheme import SchemeCreate, SchemeRead, SchemeUpdate
+from typing import List
 
 router = APIRouter()
 
-@router.post("/", response_model=SchemeResponse)
-async def create_scheme(data: SchemeCreate, session: AsyncSession = Depends(get_session)):
-    scheme = Scheme(**data.dict())
-    session.add(scheme)
-    await session.commit()
-    await session.refresh(scheme)
-    return scheme
+@router.get("/", response_model=List[SchemeRead])
+async def read_schemes(skip: int = 0, limit: int = 10, session: AsyncSession = Depends(get_async_session)):
+    result = await session.execute(select(Scheme).offset(skip).limit(limit))
+    schemes = result.scalars().all()
+    return schemes
 
-@router.get("/{scheme_id}", response_model=SchemeResponse)
-async def get_scheme(scheme_id: int, session: AsyncSession = Depends(get_session)):
-    result = await session.execute(select(Scheme).where(Scheme.id == scheme_id))
-    scheme = result.scalars().first()
+@router.post("/", response_model=SchemeRead)
+async def create_scheme(scheme: SchemeCreate, session: AsyncSession = Depends(get_async_session)):
+    new_scheme = Scheme(**scheme.dict())
+    session.add(new_scheme)
+    await session.commit()
+    await session.refresh(new_scheme)
+    return new_scheme
+
+@router.get("/{scheme_id}", response_model=SchemeRead)
+async def read_scheme(scheme_id: int, session: AsyncSession = Depends(get_async_session)):
+    scheme = await session.get(Scheme, scheme_id)
     if not scheme:
         raise HTTPException(status_code=404, detail="Scheme not found")
     return scheme
+
+@router.put("/{scheme_id}", response_model=SchemeRead)
+async def update_scheme(scheme_id: int, scheme: SchemeUpdate, session: AsyncSession = Depends(get_async_session)):
+    existing_scheme = await session.get(Scheme, scheme_id)
+    if not existing_scheme:
+        raise HTTPException(status_code=404, detail="Scheme not found")
+    for key, value in scheme.dict().items():
+        setattr(existing_scheme, key, value)
+    await session.commit()
+    await session.refresh(existing_scheme)
+    return existing_scheme
+
+@router.delete("/{scheme_id}")
+async def delete_scheme(scheme_id: int, session: AsyncSession = Depends(get_async_session)):
+    scheme = await session.get(Scheme, scheme_id)
+    if not scheme:
+        raise HTTPException(status_code=404, detail="Scheme not found")
+    await session.delete(scheme)
+    await session.commit()
+    return {"detail": "Scheme deleted successfully"}
