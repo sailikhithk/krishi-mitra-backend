@@ -30,19 +30,40 @@
             soil_health.py
             user.py
             __init__.py
+            __pycache__/
+                bid.cpython-311.pyc
+                scheme.cpython-311.pyc
+                soil_health.cpython-311.pyc
+                user.cpython-311.pyc
+                __init__.cpython-311.pyc
         routers/
             bidding.py
             scheme.py
             soil_health.py
             user.py
             __init__.py
+            __pycache__/
+                user.cpython-311.pyc
+                __init__.cpython-311.pyc
         schemas/
             bid.py
             scheme.py
             soil_health.py
             user.py
             __init__.py
+            __pycache__/
+                user.cpython-311.pyc
+                __init__.cpython-311.pyc
         utils/
+            auth.py
             helpers.py
             __init__.py
+            __pycache__/
+                auth.cpython-311.pyc
+                __init__.cpython-311.pyc
+        __pycache__/
+            config.cpython-311.pyc
+            database.cpython-311.pyc
+            main.cpython-311.pyc
+            __init__.cpython-311.pyc
     tests/

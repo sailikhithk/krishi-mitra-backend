@@ -11,3 +11,4 @@ psycopg2-binary
 fastapi[all]
 passlib[bcrypt]
 pyjwt
+python-jose

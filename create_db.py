@@ -1,18 +1,12 @@
-from sqlalchemy import create_engine, Column, Integer, String, Float, ForeignKey, DateTime, Boolean, Table
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.ext.asyncio import create_async_engine
+from sqlalchemy.orm import sessionmaker, declarative_base
+from sqlalchemy import Column, Integer, String, Float, ForeignKey, DateTime, Boolean, Table
 from sqlalchemy.orm import relationship
 from datetime import datetime
-from dotenv import load_dotenv
-import os
-
-# Load environment variables
-load_dotenv()
-
-# Get database URL from environment variable
-DATABASE_URL = os.getenv("DATABASE_URL")
+from app.config import DATABASE_URL
 
 # Create SQLAlchemy engine
-engine = create_engine(DATABASE_URL)
+engine = create_async_engine(DATABASE_URL, echo=True)
 
 # Create declarative base
 Base = declarative_base()
@@ -96,9 +90,11 @@ class MarketPrice(Base):
     market = Column(String)
     recorded_at = Column(DateTime, default=datetime.utcnow)
 
-def create_tables():
-    Base.metadata.create_all(bind=engine)
+async def create_tables():
+    async with engine.begin() as conn:
+        await conn.run_sync(Base.metadata.create_all)
     print("Database tables created successfully.")
 
 if __name__ == "__main__":
-    create_tables()
+    import asyncio
+    asyncio.run(create_tables())

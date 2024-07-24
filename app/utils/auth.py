@@ -8,7 +8,7 @@ from sqlalchemy.future import select
 from app.models.user import User
 from app.schemas.user import TokenData
 from app.database import get_session
-from config import SECRET_KEY
+from app.config import SECRET_KEY
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/users/token")

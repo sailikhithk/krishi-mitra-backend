@@ -6,7 +6,7 @@ setup:
 
 # Step 2: Activate the virtual environment
 activate:
-	venv\Scripts\activate
+	.venv\Scripts\activate
 
 # Step 3: Install the required packages
 install:

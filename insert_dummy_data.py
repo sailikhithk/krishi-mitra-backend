@@ -1,23 +1,15 @@
-from sqlalchemy import create_engine, Column, Integer, String, Float, ForeignKey, DateTime, Boolean, Table
+from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
 from sqlalchemy.orm import sessionmaker, relationship, declarative_base
+from sqlalchemy import Column, Integer, String, Float, ForeignKey, DateTime, Boolean, Table
+from sqlalchemy.dialects.postgresql import insert
 from datetime import datetime
-from dotenv import load_dotenv
-import os
-
-# Load environment variables
-load_dotenv()
-
-# Get database URL from environment variable
-DATABASE_URL = os.getenv("DATABASE_URL")
+from app.config import DATABASE_URL
 
 # Create SQLAlchemy engine
-engine = create_engine(DATABASE_URL)
+engine = create_async_engine(DATABASE_URL, echo=True)
 
 # Create a configured "Session" class
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
-# Create a Session
-session = SessionLocal()
+async_session = sessionmaker(engine, expire_on_commit=False, class_=AsyncSession)
 
 # Create declarative base
 Base = declarative_base()
@@ -101,50 +93,140 @@ class MarketPrice(Base):
     market = Column(String)
     recorded_at = Column(DateTime, default=datetime.utcnow)
 
-def insert_dummy_data():
-    # Insert dummy users
-    user1 = User(username="john_doe", email="john@example.com", hashed_password="hashed_password1")
-    user2 = User(username="jane_doe", email="jane@example.com", hashed_password="hashed_password2")
-    session.add_all([user1, user2])
-    session.commit()
+async def insert_or_update(session, model, data):
+    stmt = insert(model).values(**data)
+    update_dict = {c.name: getattr(stmt.excluded, c.name) for c in stmt.table.c}
+    stmt = stmt.on_conflict_do_update(
+        index_elements=['id'],  # This should be your unique constraint column(s)
+        set_=update_dict
+    )
+    await session.execute(stmt)
 
-    # Insert dummy soil health data
-    soil_health1 = SoilHealth(user_id=user1.id, ph=6.5, nitrogen=0.3, phosphorus=0.2, potassium=0.5, organic_matter=1.2)
-    soil_health2 = SoilHealth(user_id=user2.id, ph=7.0, nitrogen=0.4, phosphorus=0.3, potassium=0.6, organic_matter=1.3)
-    session.add_all([soil_health1, soil_health2])
-    session.commit()
+async def insert_dummy_data():
+    async with async_session() as session:
+        async with session.begin():
+            # Insert or update dummy users
+            await insert_or_update(session, User, {
+                'id': 1,
+                'username': "john_doe",
+                'email': "john@example.com",
+                'hashed_password': "hashed_password1"
+            })
+            await insert_or_update(session, User, {
+                'id': 2,
+                'username': "jane_doe",
+                'email': "jane@example.com",
+                'hashed_password': "hashed_password2"
+            })
 
-    # Insert dummy bids
-    bid1 = Bid(user_id=user1.id, crop="Wheat", quantity=100.0, price=200.0, status="open")
-    bid2 = Bid(user_id=user2.id, crop="Corn", quantity=150.0, price=250.0, status="closed")
-    session.add_all([bid1, bid2])
-    session.commit()
+            # Fetch user ids
+            result = await session.execute(select(User).where(User.username == "john_doe"))
+            user1 = result.scalars().first()
 
-    # Insert dummy schemes
-    scheme1 = Scheme(name="Scheme A", description="Description A", eligibility="Eligibility A", benefits="Benefits A")
-    scheme2 = Scheme(name="Scheme B", description="Description B", eligibility="Eligibility B", benefits="Benefits B")
-    session.add_all([scheme1, scheme2])
-    session.commit()
+            result = await session.execute(select(User).where(User.username == "jane_doe"))
+            user2 = result.scalars().first()
 
-    # Associate users with schemes
-    user1.schemes.append(scheme1)
-    user2.schemes.append(scheme2)
-    session.commit()
+            # Insert or update dummy soil health data
+            await insert_or_update(session, SoilHealth, {
+                'id': 1,
+                'user_id': user1.id,
+                'ph': 6.5,
+                'nitrogen': 0.3,
+                'phosphorus': 0.2,
+                'potassium': 0.5,
+                'organic_matter': 1.2
+            })
+            await insert_or_update(session, SoilHealth, {
+                'id': 2,
+                'user_id': user2.id,
+                'ph': 7.0,
+                'nitrogen': 0.4,
+                'phosphorus': 0.3,
+                'potassium': 0.6,
+                'organic_matter': 1.3
+            })
 
-    # Insert dummy weather data
-    weather1 = WeatherData(location="Location A", temperature=25.5, humidity=60.0, precipitation=5.0, wind_speed=10.0)
-    weather2 = WeatherData(location="Location B", temperature=22.0, humidity=55.0, precipitation=10.0, wind_speed=15.0)
-    session.add_all([weather1, weather2])
-    session.commit()
+            # Insert or update dummy bids
+            await insert_or_update(session, Bid, {
+                'id': 1,
+                'user_id': user1.id,
+                'crop': "Wheat",
+                'quantity': 100.0,
+                'price': 200.0,
+                'status': "open"
+            })
+            await insert_or_update(session, Bid, {
+                'id': 2,
+                'user_id': user2.id,
+                'crop': "Corn",
+                'quantity': 150.0,
+                'price': 250.0,
+                'status': "closed"
+            })
 
-    # Insert dummy market prices
-    market_price1 = MarketPrice(crop="Wheat", price=200.0, market="Market A")
-    market_price2 = MarketPrice(crop="Corn", price=250.0, market="Market B")
-    session.add_all([market_price1, market_price2])
-    session.commit()
+            # Insert or update dummy schemes
+            await insert_or_update(session, Scheme, {
+                'id': 1,
+                'name': "Scheme A",
+                'description': "Description A",
+                'eligibility': "Eligibility A",
+                'benefits': "Benefits A"
+            })
+            await insert_or_update(session, Scheme, {
+                'id': 2,
+                'name': "Scheme B",
+                'description': "Description B",
+                'eligibility': "Eligibility B",
+                'benefits': "Benefits B"
+            })
 
-    print("Dummy data inserted successfully.")
+            # Associate users with schemes
+            await insert_or_update(session, user_scheme, {
+                'user_id': user1.id,
+                'scheme_id': 1
+            })
+            await insert_or_update(session, user_scheme, {
+                'user_id': user2.id,
+                'scheme_id': 2
+            })
+
+            # Insert or update dummy weather data
+            await insert_or_update(session, WeatherData, {
+                'id': 1,
+                'location': "Location A",
+                'temperature': 25.5,
+                'humidity': 60.0,
+                'precipitation': 5.0,
+                'wind_speed': 10.0
+            })
+            await insert_or_update(session, WeatherData, {
+                'id': 2,
+                'location': "Location B",
+                'temperature': 22.0,
+                'humidity': 55.0,
+                'precipitation': 10.0,
+                'wind_speed': 15.0
+            })
+
+            # Insert or update dummy market prices
+            await insert_or_update(session, MarketPrice, {
+                'id': 1,
+                'crop': "Wheat",
+                'price': 200.0,
+                'market': "Market A"
+            })
+            await insert_or_update(session, MarketPrice, {
+                'id': 2,
+                'crop': "Corn",
+                'price': 250.0,
+                'market': "Market B"
+            })
+
+        await session.commit()
+
+    print("Dummy data inserted or updated successfully.")
 
 if __name__ == "__main__":
-    insert_dummy_data()
-    session.close()
+    import asyncio
+    from sqlalchemy.future import select
+    asyncio.run(insert_dummy_data())
