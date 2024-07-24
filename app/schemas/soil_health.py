@@ -1,18 +1,14 @@
 from pydantic import BaseModel
 
-class SoilHealthBase(BaseModel):
+class SoilHealthCreate(BaseModel):
     ph: float
     nitrogen: float
     phosphorus: float
     potassium: float
     organic_matter: float
 
-class SoilHealthCreate(SoilHealthBase):
-    pass
-
-class SoilHealth(SoilHealthBase):
+class SoilHealthResponse(SoilHealthCreate):
     id: int
-    user_id: int
 
     class Config:
         orm_mode = True

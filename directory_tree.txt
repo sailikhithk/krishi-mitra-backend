@@ -1,39 +1,27 @@
-backend/
-├── app/
-│   ├── __init__.py
-│   ├── main.py
-│   ├── database.py
-│   ├── models/
-│   │   ├── __init__.py
-│   │   ├── soil_health.py
-│   │   ├── bid.py
-│   │   ├── user.py
-│   │   └── scheme.py
-│   ├── schemas/
-│   │   ├── __init__.py
-│   │   ├── soil_health.py
-│   │   ├── bid.py
-│   │   ├── user.py
-│   │   └── scheme.py
-│   ├── routers/
-│   │   ├── __init__.py
-│   │   ├── soil_health.py
-│   │   ├── bidding.py
-│   │   ├── user.py
-│   │   └── scheme.py
-│   ├── crud/
-│   │   ├── __init__.py
-│   │   ├── soil_health.py
-│   │   ├── bid.py
-│   │   ├── user.py
-│   │   └── scheme.py
-│   └── utils/
-│       ├── __init__.py
-│       └── helpers.py
-├── alembic/
-│   └── ... (migration files)
-├── tests/
-│   └── ... (test files)
-├── .env
-├── requirements.txt
-└── run.py
+./
+    .env
+    .gitignore
+    compare_schemas.py
+    create_db.py
+    directory_tree.txt
+    generate_directory_tree.py
+    inspect_db.py
+    Makefile
+    output.txt
+    requirements.txt
+    run.py
+    setup.sh
+    app/
+        config.py
+        database.py
+        main.py
+        __init__.py
+        models/
+            soil_health.py
+            __init__.py
+        routers/
+            soil_health.py
+            __init__.py
+        schemas/
+            soil_health.py
+            __init__.py
