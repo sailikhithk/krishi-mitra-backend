@@ -14,16 +14,22 @@ pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/users/token")
 
 def verify_password(plain_password, hashed_password):
+    print(f"Verifying password: {plain_password} against hash: {hashed_password}")
     return pwd_context.verify(plain_password, hashed_password)
 
 def get_password_hash(password):
+    print(f"Hashing password: {password}")
     return pwd_context.hash(password)
 
 async def authenticate_user(session: AsyncSession, username: str, password: str):
     result = await session.execute(select(User).where(User.username == username))
     user = result.scalars().first()
+    if user:
+        print(f"User found: {user.username} with hashed password: {user.hashed_password}")
     if not user or not verify_password(password, user.hashed_password):
+        print("Authentication failed: Incorrect username or password")
         return False
+    print("Authentication successful")
     return user
 
 def create_access_token(data: dict, expires_delta: timedelta | None = None):

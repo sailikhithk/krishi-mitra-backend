@@ -19,15 +19,18 @@ async def signup(user: UserCreate, session: AsyncSession = Depends(get_async_ses
     if existing_user:
         raise HTTPException(status_code=400, detail="Username already registered")
 
+    print(f"Signing up user: {user.username} with password: {user.hashed_password}")
     hashed_password = get_password_hash(user.hashed_password)
     new_user = User(username=user.username, email=user.email, hashed_password=hashed_password)
     session.add(new_user)
     await session.commit()
     await session.refresh(new_user)
+    print(f"User {new_user.username} created with hashed password: {new_user.hashed_password}")
     return new_user
 
 @router.post("/login", response_model=Token)
 async def login(form_data: OAuth2PasswordRequestForm = Depends(), session: AsyncSession = Depends(get_async_session)):
+    print(f"Logging in user: {form_data.username} with password: {form_data.password}")
     user = await authenticate_user(session, form_data.username, form_data.password)
     if not user:
         raise HTTPException(
@@ -39,6 +42,7 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends(), session: Async
     access_token = create_access_token(
         data={"sub": user.username}, expires_delta=access_token_expires
     )
+    print(f"User {user.username} logged in successfully, token generated.")
     return {"access_token": access_token, "token_type": "bearer"}
 
 @router.get("/me/", response_model=UserRead)
