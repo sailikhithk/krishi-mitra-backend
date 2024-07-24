@@ -5,23 +5,44 @@
     create_db.py
     directory_tree.txt
     generate_directory_tree.py
+    insert_dummy_data.py
     inspect_db.py
     Makefile
     output.txt
     requirements.txt
     run.py
     setup.sh
+    alembic/
     app/
         config.py
         database.py
         main.py
         __init__.py
-        models/
+        crud/
+            bid.py
+            scheme.py
             soil_health.py
+            user.py
+            __init__.py
+        models/
+            bid.py
+            scheme.py
+            soil_health.py
+            user.py
             __init__.py
         routers/
+            bidding.py
+            scheme.py
             soil_health.py
+            user.py
             __init__.py
         schemas/
+            bid.py
+            scheme.py
             soil_health.py
+            user.py
             __init__.py
+        utils/
+            helpers.py
+            __init__.py
+    tests/

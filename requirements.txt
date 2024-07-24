@@ -8,3 +8,6 @@ pydantic
 python-dotenv
 motor
 psycopg2-binary
+fastapi[all]
+passlib[bcrypt]
+pyjwt
