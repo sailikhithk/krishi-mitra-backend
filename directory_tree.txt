@@ -1,6 +1,7 @@
 ./
     .env
     .gitignore
+    backend_directory_tree.txt
     compare_schemas.py
     create_db.py
     directory_tree.txt
@@ -9,6 +10,7 @@
     inspect_db.py
     Makefile
     output.txt
+    README.md
     requirements.txt
     run.py
     setup.sh
@@ -43,6 +45,9 @@
             user.py
             __init__.py
             __pycache__/
+                bidding.cpython-311.pyc
+                scheme.cpython-311.pyc
+                soil_health.cpython-311.pyc
                 user.cpython-311.pyc
                 __init__.cpython-311.pyc
         schemas/
@@ -52,6 +57,9 @@
             user.py
             __init__.py
             __pycache__/
+                bid.cpython-311.pyc
+                scheme.cpython-311.pyc
+                soil_health.cpython-311.pyc
                 user.cpython-311.pyc
                 __init__.cpython-311.pyc
         utils/
