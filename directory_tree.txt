@@ -1,0 +1,39 @@
+backend/
+├── app/
+│   ├── __init__.py
+│   ├── main.py
+│   ├── database.py
+│   ├── models/
+│   │   ├── __init__.py
+│   │   ├── soil_health.py
+│   │   ├── bid.py
+│   │   ├── user.py
+│   │   └── scheme.py
+│   ├── schemas/
+│   │   ├── __init__.py
+│   │   ├── soil_health.py
+│   │   ├── bid.py
+│   │   ├── user.py
+│   │   └── scheme.py
+│   ├── routers/
+│   │   ├── __init__.py
+│   │   ├── soil_health.py
+│   │   ├── bidding.py
+│   │   ├── user.py
+│   │   └── scheme.py
+│   ├── crud/
+│   │   ├── __init__.py
+│   │   ├── soil_health.py
+│   │   ├── bid.py
+│   │   ├── user.py
+│   │   └── scheme.py
+│   └── utils/
+│       ├── __init__.py
+│       └── helpers.py
+├── alembic/
+│   └── ... (migration files)
+├── tests/
+│   └── ... (test files)
+├── .env
+├── requirements.txt
+└── run.py
