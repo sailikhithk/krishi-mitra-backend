@@ -1,3 +1,4 @@
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI
 from app.routers import user, soil_health, bidding, scheme
 
@@ -5,6 +6,15 @@ app = FastAPI(
     title="Krishi Mitra API",
     description="API documentation for the Krishi Mitra application.",
     version="1.0.0",
+)
+
+# CORS middleware configuration
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],  # Frontend URL
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 app.include_router(user.router, prefix="/users", tags=["users"])

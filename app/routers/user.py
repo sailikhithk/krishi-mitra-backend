@@ -1,13 +1,14 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
-from sqlalchemy.orm import Session
 from app.database import get_async_session
 from app.models.user import User
 from app.schemas.user import UserCreate, UserRead, UserUpdate
 from typing import List
+from passlib.context import CryptContext
 
 router = APIRouter()
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 @router.get("/", response_model=List[UserRead])
 async def read_users(skip: int = 0, limit: int = 10, session: AsyncSession = Depends(get_async_session)):
@@ -17,7 +18,8 @@ async def read_users(skip: int = 0, limit: int = 10, session: AsyncSession = Dep
 
 @router.post("/", response_model=UserRead)
 async def create_user(user: UserCreate, session: AsyncSession = Depends(get_async_session)):
-    new_user = User(**user.dict())
+    hashed_password = pwd_context.hash(user.hashed_password)
+    new_user = User(username=user.username, email=user.email, hashed_password=hashed_password)
     session.add(new_user)
     await session.commit()
     await session.refresh(new_user)
