@@ -1,7 +1,6 @@
 ./
     .env
     .gitignore
-    backend_directory_tree.txt
     compare_schemas.py
     create_db.py
     directory_tree.txt
