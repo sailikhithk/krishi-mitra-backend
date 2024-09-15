@@ -1,0 +1,70 @@
+Detailed Prompt for Krishi Mitra Bidding Portal Development:
+You are working on the Bidding Portal feature for the Krishi Mitra agricultural platform. This feature is crucial for connecting farmers with buyers and facilitating transparent, efficient transactions. Here's the current status and checklist for the Bidding Portal development:
+
+Project Overview:
+
+Krishi Mitra is a comprehensive agricultural platform with both frontend (React, TypeScript, Vite) and backend (FastAPI, SQLAlchemy) implementations.
+The Bidding Portal is one of the key features, alongside soil health monitoring, weather updates, and government scheme information.
+
+
+Current Status of Bidding Portal:
+
+Basic structure of BiddingProcess.tsx component is in place.
+Backend API endpoints for bids (/bids/) are set up with CRUD operations.
+Database model for bids is created in the backend.
+
+
+Bidding Portal Checklist:
+Frontend Tasks:
+[ ] Enhance BiddingProcess.tsx to display active bids
+[ ] Implement a form for creating new bids
+[ ] Add filtering and sorting options for bids
+[ ] Create a detailed view for individual bids
+[ ] Implement real-time updates for bid status changes
+[ ] Add a bidding history section
+[ ] Implement user notifications for bid updates
+[ ] Create a dashboard for users to manage their bids
+[ ] Implement data visualization for bid trends
+Backend Tasks:
+[ ] Enhance bid model to include more detailed information
+[ ] Implement advanced querying for bids (filtering, sorting, pagination)
+[ ] Create an endpoint for bid analytics
+[ ] Implement real-time updates using WebSockets
+[ ] Add validation for bid creation and updates
+[ ] Implement a rating system for buyers and sellers
+[ ] Create an escrow system for secure transactions
+Integration Tasks:
+[ ] Ensure seamless communication between frontend and backend for all bidding operations
+[ ] Implement error handling and loading states in the frontend
+[ ] Add authentication checks for bid-related operations
+[ ] Optimize API calls for performance
+Testing and Documentation:
+[ ] Write unit tests for frontend components
+[ ] Write API tests for backend endpoints
+[ ] Create user documentation for the bidding process
+[ ] Update API documentation with new endpoints and functionalities
+Next Steps:
+
+Focus on enhancing the BiddingProcess.tsx component to display and manage bids effectively.
+Implement the form for creating new bids in the frontend.
+Enhance the backend to support more detailed bid information and advanced querying.
+
+
+Considerations:
+
+Ensure the bidding process is intuitive and user-friendly for farmers who may not be tech-savvy.
+Implement robust error handling and validation to prevent invalid bids.
+Consider adding features like automatic bidding or bid suggestions based on market trends.
+Ensure the system can handle a high volume of concurrent bids during peak seasons.
+
+
+Questions to Address:
+
+What types of crops or products will be available for bidding?
+Are there any regulatory considerations for agricultural product bidding in the target market?
+How will the platform handle disputes between buyers and sellers?
+What metrics will be important for users to see in the bidding dashboard?
+
+
+
+Please provide updates on which tasks have been completed, any challenges faced, and what specific area you'd like to focus on next in the Bidding Portal development.
