@@ -25,3 +25,8 @@ all: setup activate install create_db run
 
 tree_windows:
 	tree /F /A | findstr /V /C:"venv\\" | findstr /V /C:".pyc" | findstr /V /C:".DS_Store" | findstr /V /C:"__pycache__" > backend_directory_tree.txt
+
+
+run:
+	venv\Scripts\activate
+	uvicorn app.main:app --reload 
