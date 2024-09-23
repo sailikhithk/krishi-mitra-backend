@@ -1,13 +1,14 @@
-from sqlalchemy import Column, Integer, Float, ForeignKey, DateTime
+from sqlalchemy import Column, DateTime, Float, ForeignKey, Integer
 from sqlalchemy.orm import relationship
 from datetime import datetime
-from app.database import Base
+
+from app.models.base import Base
 
 class SoilHealth(Base):
-    __tablename__ = 'soil_health'
+    __tablename__ = "soil_health"
 
     id = Column(Integer, primary_key=True, index=True)
-    user_id = Column(Integer, ForeignKey('users.id'))
+    user_id = Column(Integer, ForeignKey("users.id"))
     ph = Column(Float)
     nitrogen = Column(Float)
     phosphorus = Column(Float)

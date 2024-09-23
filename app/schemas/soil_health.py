@@ -1,9 +1,11 @@
-from pydantic import BaseModel
-from typing import Optional
 from datetime import datetime
+from typing import Optional
+
+from pydantic import BaseModel
+
 
 class SoilHealthBase(BaseModel):
-    user_id: int
+    # Add your soil health fields here
     ph: float
     nitrogen: float
     phosphorus: float
@@ -11,9 +13,10 @@ class SoilHealthBase(BaseModel):
     organic_matter: float
 
 class SoilHealthCreate(SoilHealthBase):
-    pass
+    user_id: int
 
 class SoilHealthUpdate(SoilHealthBase):
+    # You can add additional fields for update if needed
     pass
 
 class SoilHealthRead(SoilHealthBase):

@@ -1,6 +1,7 @@
-from sqlalchemy import create_engine, inspect
-from dotenv import load_dotenv
 import os
+
+from dotenv import load_dotenv
+from sqlalchemy import create_engine, inspect
 
 # Load environment variables
 load_dotenv()
@@ -11,6 +12,7 @@ DATABASE_URL = os.getenv("DATABASE_URL")
 # Create SQLAlchemy engine
 engine = create_engine(DATABASE_URL)
 
+
 def inspect_db():
     inspector = inspect(engine)
     tables = inspector.get_table_names()
@@ -20,6 +22,7 @@ def inspect_db():
         columns = inspector.get_columns(table_name)
         for column in columns:
             print(f"  Column: {column['name']}, Type: {column['type']}")
+
 
 if __name__ == "__main__":
     inspect_db()

@@ -29,4 +29,14 @@ tree_windows:
 
 run:
 	venv\Scripts\activate
-	uvicorn app.main:app --reload 
+	uvicorn app.main:app --reload
+
+pre-commit:
+	pip uninstall pre-commit -y
+	pip install pre-commit
+	pre-commit uninstall
+	pre-commit install
+	pre-commit run --all-files
+
+remove-cache:
+	Remove-Item -Recurse -Force $env:USERPROFILE\.cache\pre-commit

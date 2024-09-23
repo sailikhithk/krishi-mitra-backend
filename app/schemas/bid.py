@@ -1,6 +1,8 @@
-from pydantic import BaseModel
-from typing import Optional
 from datetime import datetime
+from typing import Optional
+
+from pydantic import BaseModel
+
 
 class BidBase(BaseModel):
     user_id: int
@@ -9,11 +11,14 @@ class BidBase(BaseModel):
     price: float
     status: str
 
+
 class BidCreate(BidBase):
     pass
 
+
 class BidUpdate(BidBase):
     pass
+
 
 class BidRead(BidBase):
     id: int

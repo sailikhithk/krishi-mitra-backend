@@ -1,6 +1,8 @@
-from pydantic import BaseModel
-from typing import Optional
 from datetime import datetime
+from typing import Optional
+
+from pydantic import BaseModel
+
 
 class SchemeBase(BaseModel):
     name: str
@@ -8,11 +10,14 @@ class SchemeBase(BaseModel):
     eligibility: str
     benefits: str
 
+
 class SchemeCreate(SchemeBase):
     pass
 
+
 class SchemeUpdate(SchemeBase):
     pass
+
 
 class SchemeRead(SchemeBase):
     id: int
