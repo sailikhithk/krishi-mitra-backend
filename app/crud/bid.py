@@ -4,6 +4,16 @@ from app.models.bid import Bid
 from app.schemas.bid import BidCreate, BidResponse
 
 async def create_bid(session: AsyncSession, data: BidCreate) -> BidResponse:
+    """
+    Create a new bid in the database.
+
+    Args:
+        session (AsyncSession): The database session.
+        data (BidCreate): The bid data to create.
+
+    Returns:
+        BidResponse: The created bid.
+    """
     bid = Bid(**data.dict())
     session.add(bid)
     await session.commit()

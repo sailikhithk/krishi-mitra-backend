@@ -5,6 +5,7 @@ from sqlalchemy.dialects.postgresql import insert
 from datetime import datetime, timedelta
 import random
 from app.config import DATABASE_URL
+from app.utils.auth import get_password_hash
 
 # Create SQLAlchemy engine
 engine = create_async_engine(DATABASE_URL, echo=True)
@@ -111,10 +112,10 @@ async def insert_data():
         async with session.begin():
             # Insert dummy users
             await session.execute(insert(User).values([
-                {'id': 1, 'username': "john_doe", 'email': "john@example.com", 'hashed_password': "hashed_password1"},
-                {'id': 2, 'username': "jane_doe", 'email': "jane@example.com", 'hashed_password': "hashed_password2"},
-                {'id': 3, 'username': "bob_smith", 'email': "bob@example.com", 'hashed_password': "hashed_password3"},
-                {'id': 4, 'username': "alice_johnson", 'email': "alice@example.com", 'hashed_password': "hashed_password4"}
+                {'id': 1, 'username': "john_doe", 'email': "john@example.com", 'hashed_password': get_password_hash("1234")},
+                {'id': 2, 'username': "jane_doe", 'email': "jane@example.com", 'hashed_password': get_password_hash("1234")},
+                {'id': 3, 'username': "bob_smith", 'email': "bob@example.com", 'hashed_password': get_password_hash("1234")},
+                {'id': 4, 'username': "alice_johnson", 'email': "alice@example.com", 'hashed_password': get_password_hash("1234")}
             ]))
 
             # Insert dummy soil health data
