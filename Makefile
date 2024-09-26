@@ -6,7 +6,7 @@ setup:
 
 # Step 2: Activate the virtual environment
 activate:
-	.venv\Scripts\activate
+	.\venv\Scripts\activate
 
 # Step 3: Install the required packages
 install:
@@ -15,6 +15,8 @@ install:
 # Step 4: Create the database tables
 create_db:
 	python create_db.py
+	python compare_schemas.py
+	python insert_dummy_data.py
 
 # Step 5: Run the FastAPI application
 run:

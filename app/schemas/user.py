@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, EmailStr, Field
 from typing import Optional
 from datetime import datetime
 
@@ -6,8 +6,11 @@ class UserBase(BaseModel):
     username: str
     email: str
 
-class UserCreate(UserBase):
-    hashed_password: str
+class UserCreate(BaseModel):
+    username: str
+    email: EmailStr
+    password: str
+    role: str
 
 class UserUpdate(UserBase):
     hashed_password: Optional[str] = None

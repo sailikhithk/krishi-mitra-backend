@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Depends, HTTPException, status
-from fastapi.security import OAuth2PasswordRequestForm
+from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 from typing import List
-from app.models.user import User
+from app.models.user import User, UserRole
 from app.schemas.user import UserCreate, UserRead, UserUpdate, Token
 from app.database import get_async_session
 from app.utils.auth import authenticate_user, create_access_token, get_current_user, get_password_hash
@@ -19,9 +19,17 @@ async def signup(user: UserCreate, session: AsyncSession = Depends(get_async_ses
     if existing_user:
         raise HTTPException(status_code=400, detail="Username already registered")
 
-    print(f"Signing up user: {user.username} with password: {user.hashed_password}")
-    hashed_password = get_password_hash(user.hashed_password)
-    new_user = User(username=user.username, email=user.email, hashed_password=hashed_password)
+    # Validate the role
+    if user.role not in [role.value for role in UserRole]:
+        raise HTTPException(status_code=400, detail="Invalid user role")
+
+    hashed_password = get_password_hash(user.password)
+    new_user = User(
+        username=user.username,
+        email=user.email,
+        hashed_password=hashed_password,
+        role=user.role  # Store the role as a string
+    )
     session.add(new_user)
     await session.commit()
     await session.refresh(new_user)
