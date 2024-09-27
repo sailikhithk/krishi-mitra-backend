@@ -42,8 +42,8 @@ async def get_current_user(token: str = Depends(oauth2_scheme), session: AsyncSe
         role: str = payload.get("role")
         if username is None or role is None:
             raise credentials_exception
-    except JWTError:
-        raise credentials_exception
+    except JWTError as e:
+        raise credentials_exception from e
     result = await session.execute(select(User).where(User.username == username))
     user = result.scalars().first()
     if user is None or user.role != role:
