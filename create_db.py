@@ -1,15 +1,21 @@
+import asyncio
 from sqlalchemy.ext.asyncio import create_async_engine
-from sqlalchemy.orm import sessionmaker, declarative_base
-from sqlalchemy import Column, Integer, String, Float, ForeignKey, DateTime, Boolean, Table
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import declarative_base, relationship
+from sqlalchemy import Column, Integer, String, Float, ForeignKey, DateTime, Boolean, Table, Enum
 from datetime import datetime
 from app.config import DATABASE_URL
+import enum
 
-# Create SQLAlchemy engine
+# Create SQLAlchemy async engine
 engine = create_async_engine(DATABASE_URL, echo=True)
 
 # Create declarative base
 Base = declarative_base()
+
+class UserRole(enum.Enum):
+    FARMER = "farmer"
+    VENDOR = "vendor"
+    ADMIN = "admin"
 
 # Define association table for many-to-many relationship between User and Scheme
 user_scheme = Table('user_scheme', Base.metadata,
@@ -25,6 +31,7 @@ class User(Base):
     email = Column(String, unique=True, index=True)
     hashed_password = Column(String)
     is_active = Column(Boolean, default=True)
+    role = Column(String, nullable=False)  # Keep it as String
     created_at = Column(DateTime, default=datetime.utcnow)
 
     soil_health = relationship("SoilHealth", back_populates="user")
@@ -95,6 +102,8 @@ async def create_tables():
         await conn.run_sync(Base.metadata.create_all)
     print("Database tables created successfully.")
 
+async def main():
+    await create_tables()
+
 if __name__ == "__main__":
-    import asyncio
-    asyncio.run(create_tables())
+    asyncio.run(main())
