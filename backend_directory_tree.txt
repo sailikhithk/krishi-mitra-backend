@@ -1,76 +1,77 @@
-./
-    .env
-    .gitignore
-    compare_schemas.py
-    create_db.py
-    directory_tree.txt
-    generate_directory_tree.py
-    insert_dummy_data.py
-    inspect_db.py
-    Makefile
-    output.txt
-    README.md
-    requirements.txt
-    run.py
-    setup.sh
-    alembic/
-    app/
-        config.py
-        database.py
-        main.py
-        __init__.py
-        crud/
-            bid.py
-            scheme.py
-            soil_health.py
-            user.py
-            __init__.py
-        models/
-            bid.py
-            scheme.py
-            soil_health.py
-            user.py
-            __init__.py
-            __pycache__/
-                bid.cpython-311.pyc
-                scheme.cpython-311.pyc
-                soil_health.cpython-311.pyc
-                user.cpython-311.pyc
-                __init__.cpython-311.pyc
-        routers/
-            bidding.py
-            scheme.py
-            soil_health.py
-            user.py
-            __init__.py
-            __pycache__/
-                bidding.cpython-311.pyc
-                scheme.cpython-311.pyc
-                soil_health.cpython-311.pyc
-                user.cpython-311.pyc
-                __init__.cpython-311.pyc
-        schemas/
-            bid.py
-            scheme.py
-            soil_health.py
-            user.py
-            __init__.py
-            __pycache__/
-                bid.cpython-311.pyc
-                scheme.cpython-311.pyc
-                soil_health.cpython-311.pyc
-                user.cpython-311.pyc
-                __init__.cpython-311.pyc
-        utils/
-            auth.py
-            helpers.py
-            __init__.py
-            __pycache__/
-                auth.cpython-311.pyc
-                __init__.cpython-311.pyc
-        __pycache__/
-            config.cpython-311.pyc
-            database.cpython-311.pyc
-            main.cpython-311.pyc
-            __init__.cpython-311.pyc
-    tests/
+Folder PATH listing
+Volume serial number is 00740069 58C0:B943
+C:.
+|   .env
+|   .gitignore
+|   .pre-commit-config.yaml
+|   backend_directory_tree.txt
+|   compare_schemas.py
+|   create_db.py
+|   generate_directory_tree.py
+|   insert_dummy_data.py
+|   inspect_db.py
+|   Makefile
+|   migrations_add_user_role.py
+|   postman_collection.json
+|   project_checklist.md
+|   README_backend.md
+|   requirements.txt
+|   run.py
+|   setup.sh
+|   test_db_connection.py
+|               
++---alembic
++---app
+|   |   config.py
+|   |   database.py
+|   |   dependencies.py
+|   |   main.py
+|   |   __init__.py
+|   |   
+|   +---crud
+|   |   |   bid.py
+|   |   |   scheme.py
+|   |   |   soil_health.py
+|   |   |   user.py
+|   |   |   __init__.py
+|   |   |   
+|   |           
+|   +---models
+|   |   |   base.py
+|   |   |   bid.py
+|   |   |   market_price.py
+|   |   |   scheme.py
+|   |   |   soil_health.py
+|   |   |   user.py
+|   |   |   weather_data.py
+|   |   |   __init__.py
+|   |   |   
+|   |           
+|   +---routers
+|   |   |   bidding.py
+|   |   |   scheme.py
+|   |   |   soil_health.py
+|   |   |   user.py
+|   |   |   __init__.py
+|   |   |   
+|   |           
+|   +---schemas
+|   |   |   bid.py
+|   |   |   scheme.py
+|   |   |   soil_health.py
+|   |   |   user.py
+|   |   |   __init__.py
+|   |   |   
+|   |           
+|   +---utils
+|   |   |   access_control.py
+|   |   |   auth.py
+|   |   |   helpers.py
+|   |   |   __init__.py
+|   |   |   
+|   |           
+|           
++---prompts
+|       project prompt
+|       
++---tests

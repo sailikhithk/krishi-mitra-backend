@@ -16,7 +16,6 @@ app.add_middleware(
     allow_origins=["http://localhost:5173"],  # Frontend URL
     allow_credentials=True,
     allow_methods=["*"],
-    allow_headers=["*"],
 )
 
 app.include_router(user.router, prefix="/users", tags=["users"])

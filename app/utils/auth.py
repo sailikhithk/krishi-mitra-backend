@@ -39,23 +39,24 @@ async def get_current_user(token: str = Depends(oauth2_scheme), session: AsyncSe
     try:
         payload = jwt.decode(token, SECRET_KEY, algorithms=["HS256"])
         username: str = payload.get("sub")
-        if username is None:
+        role: str = payload.get("role")
+        if username is None or role is None:
             raise credentials_exception
     except JWTError:
         raise credentials_exception
     result = await session.execute(select(User).where(User.username == username))
     user = result.scalars().first()
-    if user is None:
+    if user is None or user.role != role:
         raise credentials_exception
     return user
 
-async def authenticate_user(session: AsyncSession, identifier: str, password: str):
-    result = await session.execute(select(User).where((User.username == identifier) | (User.email == identifier)))
+async def authenticate_user(session: AsyncSession, username: str, password: str, role: str):
+    result = await session.execute(select(User).where(User.username == username))
     user = result.scalars().first()
-    if user:
-        print(f"User found: {user.username} with hashed password: {user.hashed_password}")
-    if not user or not verify_password(password, user.hashed_password):
-        print("Authentication failed: Incorrect username or password")
+    if not user:
         return False
-    print("Authentication successful")
+    if not verify_password(password, user.hashed_password):
+        return False
+    if user.role != role:
+        return False
     return user
