@@ -57,6 +57,4 @@ async def authenticate_user(session: AsyncSession, username: str, password: str,
         return False
     if not verify_password(password, user.hashed_password):
         return False
-    if user.role != role:
-        return False
-    return user
+    return False if user.role != role else user
