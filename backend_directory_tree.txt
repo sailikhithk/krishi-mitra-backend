@@ -14,7 +14,7 @@ C:.
 |   migrations_add_user_role.py
 |   postman_collection.json
 |   project_checklist.md
-|   README_backend.md
+|   README.md
 |   requirements.txt
 |   run.py
 |   setup.sh

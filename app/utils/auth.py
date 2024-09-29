@@ -53,8 +53,6 @@ async def get_current_user(token: str = Depends(oauth2_scheme), session: AsyncSe
 async def authenticate_user(session: AsyncSession, username: str, password: str, role: str):
     result = await session.execute(select(User).where(User.username == username))
     user = result.scalars().first()
-    if not user:
+    if not user or not verify_password(password, user.hashed_password) or user.role != role:
         return False
-    if not verify_password(password, user.hashed_password):
-        return False
-    return False if user.role != role else user
+    return user

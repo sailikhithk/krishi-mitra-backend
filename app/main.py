@@ -3,7 +3,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.routers import user, soil_health, bidding, scheme
 from app.utils.access_control import requires_role
 from app.utils.auth import get_current_user
+from app.models.user import User
+import logging
 
+logging.basicConfig(level=logging.DEBUG)
 app = FastAPI(
     title="Krishi Mitra API",
     description="API documentation for the Krishi Mitra application.",
@@ -16,6 +19,7 @@ app.add_middleware(
     allow_origins=["http://localhost:5173"],  # Frontend URL
     allow_credentials=True,
     allow_methods=["*"],
+    allow_headers=["*"]
 )
 
 app.include_router(user.router, prefix="/users", tags=["users"])
@@ -39,5 +43,9 @@ async def vendor_dashboard(current_user: dict = Depends(get_current_user)):
 
 @app.get("/admin-dashboard")
 @requires_role("admin")
-async def admin_dashboard(current_user: dict = Depends(get_current_user)):
-    return {"message": f"Welcome to the admin dashboard, {current_user.username}!"}
+async def admin_dashboard(current_user: User = Depends(get_current_user)):
+    return {
+        "message": f"Welcome to the admin dashboard, {current_user.username}!",
+        "admin": current_user.username,
+        "role": current_user.role
+    }
