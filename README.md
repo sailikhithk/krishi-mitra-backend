@@ -195,6 +195,11 @@ To run tests, execute:
 pytest
 ```
 
+
+## Database Fix:
+
+whenever database is not connecting, we need to open services.msc in Win+R and then start the postgres services
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
