@@ -34,11 +34,19 @@ class User(Base):
     email = Column(String, unique=True, index=True)
     hashed_password = Column(String)
     is_active = Column(Boolean, default=True)
-    role = Column(String, nullable=False)  # Changed from Enum(UserRole) to String
+    role = Column(Enum(UserRole), nullable=False)
     created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    farm_size = Column(Float)
+    location = Column(String)
+    company_name = Column(String)
+    business_type = Column(String)
+    department = Column(String)
+    access_level = Column(String)
     soil_health = relationship("SoilHealth", back_populates="user")
     bids = relationship("Bid", back_populates="user")
     schemes = relationship("Scheme", secondary=user_scheme, back_populates="users")
+    produce_listings = relationship("ProduceListing", back_populates="user")
 
 class SoilHealth(Base):
     __tablename__ = 'soil_health'
@@ -56,12 +64,14 @@ class Bid(Base):
     __tablename__ = 'bids'
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey('users.id'))
-    crop = Column(String)
+    produce_listing_id = Column(Integer, ForeignKey('produce_listings.id'))
     quantity = Column(Float)
     price = Column(Float)
     status = Column(String)
     created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     user = relationship("User", back_populates="bids")
+    produce_listing = relationship("ProduceListing", back_populates="bids")
 
 class Scheme(Base):
     __tablename__ = 'schemes'
@@ -73,61 +83,87 @@ class Scheme(Base):
     created_at = Column(DateTime, default=datetime.utcnow)
     users = relationship("User", secondary=user_scheme, back_populates="schemes")
 
-class WeatherData(Base):
-    __tablename__ = 'weather_data'
+class ProduceListing(Base):
+    __tablename__ = 'produce_listings'
     id = Column(Integer, primary_key=True, index=True)
-    location = Column(String, index=True)
-    temperature = Column(Float)
-    humidity = Column(Float)
-    precipitation = Column(Float)
-    wind_speed = Column(Float)
-    recorded_at = Column(DateTime, default=datetime.utcnow)
+    user_id = Column(Integer, ForeignKey('users.id'))
+    crop = Column(String)
+    quantity = Column(Float)
+    base_price = Column(Float)
+    current_bid = Column(Float)
+    end_time = Column(DateTime)
+    status = Column(String)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    user = relationship("User", back_populates="produce_listings")
+    bids = relationship("Bid", back_populates="produce_listing")
+    logistics = relationship("Logistics", back_populates="produce_listing")
 
-class MarketPrice(Base):
-    __tablename__ = 'market_prices'
+class Logistics(Base):
+    __tablename__ = 'logistics'
     id = Column(Integer, primary_key=True, index=True)
-    crop = Column(String, index=True)
-    price = Column(Float)
-    market = Column(String)
-    recorded_at = Column(DateTime, default=datetime.utcnow)
+    order_number = Column(String, unique=True)
+    produce_listing_id = Column(Integer, ForeignKey('produce_listings.id'))
+    from_user_id = Column(Integer, ForeignKey('users.id'))
+    to_user_id = Column(Integer, ForeignKey('users.id'))
+    status = Column(String)
+    expected_delivery = Column(DateTime)
+    actual_delivery = Column(DateTime)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    produce_listing = relationship("ProduceListing", back_populates="logistics")
+    from_user = relationship("User", foreign_keys=[from_user_id])
+    to_user = relationship("User", foreign_keys=[to_user_id])
 
 async def truncate_tables():
     async with engine.begin() as conn:
-        await conn.execute(text("TRUNCATE TABLE users, soil_health, bids, schemes, weather_data, market_prices, user_scheme CASCADE"))
+        await conn.execute(text("TRUNCATE TABLE users, soil_health, bids, schemes, produce_listings, logistics, user_scheme CASCADE"))
 
 async def insert_data():
     async with AsyncSessionLocal() as session:
         async with session.begin():
             # Insert dummy users
             users = [
-                User(id=1, username="john_doe", email="john@example.com", hashed_password=get_password_hash("1234"), role=UserRole.FARMER.value),
-                User(id=2, username="jane_doe", email="jane@example.com", hashed_password=get_password_hash("1234"), role=UserRole.VENDOR.value),
-                User(id=3, username="bob_smith", email="bob@example.com", hashed_password=get_password_hash("1234"), role=UserRole.FARMER.value),
-                User(id=4, username="alice_johnson", email="alice@example.com", hashed_password=get_password_hash("1234"), role=UserRole.ADMIN.value)
+                User(id=1, username="john_doe", email="john@krishimitra.com", hashed_password=get_password_hash("1234"), role=UserRole.FARMER, farm_size=150.5, location="Anantapur"),
+                User(id=2, username="jane_doe", email="jane@krishimitra.com", hashed_password=get_password_hash("1234"), role=UserRole.VENDOR, company_name="Jane's Agro", business_type="Wholesaler"),
+                User(id=3, username="bob_smith", email="bob@krishimitra.com", hashed_password=get_password_hash("1234"), role=UserRole.FARMER, farm_size=200.0, location="Chittoor"),
+                User(id=4, username="alice_johnson", email="alice@krishimitra.com", hashed_password=get_password_hash("1234"), role=UserRole.ADMIN, department="IT", access_level="Full")
             ]
             session.add_all(users)
 
             # Insert dummy soil health data
             soil_health_data = [
                 SoilHealth(user_id=1, ph=6.5, nitrogen=0.3, phosphorus=0.2, potassium=0.5, organic_matter=1.2),
-                SoilHealth(user_id=2, ph=7.0, nitrogen=0.4, phosphorus=0.3, potassium=0.6, organic_matter=1.3),
                 SoilHealth(user_id=3, ph=6.8, nitrogen=0.35, phosphorus=0.25, potassium=0.55, organic_matter=1.4),
-                SoilHealth(user_id=4, ph=7.2, nitrogen=0.45, phosphorus=0.35, potassium=0.65, organic_matter=1.5)
             ]
             session.add_all(soil_health_data)
 
-            # Insert dummy bids
+            # Insert dummy produce listings
             crops = ["Wheat", "Corn", "Rice", "Soybeans", "Barley"]
-            statuses = ["open", "closed", "pending", "accepted", "rejected"]
+            statuses = ["active", "completed", "cancelled"]
+            produce_listings = [
+                ProduceListing(
+                    user_id=user_id,
+                    crop=random.choice(crops),
+                    quantity=round(random.uniform(100.0, 1000.0), 2),
+                    base_price=round(random.uniform(50.0, 200.0), 2),
+                    current_bid=round(random.uniform(50.0, 200.0), 2),
+                    end_time=datetime.utcnow() + timedelta(days=random.randint(1, 7)),
+                    status=random.choice(statuses),
+                ) for user_id in [1, 3] for _ in range(5)
+            ]
+            session.add_all(produce_listings)
+
+            # Insert dummy bids
+            bid_statuses = ["pending", "accepted", "rejected"]
             bids = [
                 Bid(
-                    user_id=random.randint(1, 4),
-                    crop=random.choice(crops),
-                    quantity=round(random.uniform(50.0, 500.0), 2),
-                    price=round(random.uniform(100.0, 1000.0), 2),
-                    status=random.choice(statuses),
-                    created_at=datetime.utcnow() - timedelta(days=random.randint(0, 30))
-                ) for _ in range(20)
+                    user_id=2,
+                    produce_listing_id=listing.id,
+                    quantity=round(random.uniform(50.0, listing.quantity), 2),
+                    price=round(random.uniform(listing.base_price, listing.base_price * 1.5), 2),
+                    status=random.choice(bid_statuses),
+                ) for listing in produce_listings for _ in range(random.randint(1, 3))
             ]
             session.add_all(bids)
 
@@ -142,33 +178,23 @@ async def insert_data():
 
             # Associate users with schemes
             for user in users:
-                user.schemes = random.sample(schemes, random.randint(1, len(schemes)))
+                if user.role == UserRole.FARMER:
+                    user.schemes = random.sample(schemes, random.randint(1, len(schemes)))
 
-            # Insert dummy weather data
-            locations = ["New Delhi", "Mumbai", "Bangalore", "Kolkata", "Chennai"]
-            weather_data = [
-                WeatherData(
-                    location=random.choice(locations),
-                    temperature=round(random.uniform(20.0, 40.0), 1),
-                    humidity=round(random.uniform(30.0, 90.0), 1),
-                    precipitation=round(random.uniform(0.0, 50.0), 1),
-                    wind_speed=round(random.uniform(0.0, 30.0), 1),
-                    recorded_at=datetime.utcnow() - timedelta(hours=random.randint(0, 72))
-                ) for _ in range(20)
+            # Insert dummy logistics data
+            logistics_statuses = ["pending", "in_transit", "delivered", "cancelled"]
+            logistics = [
+                Logistics(
+                    order_number=f"ORD-{random.randint(1000, 9999)}",
+                    produce_listing_id=listing.id,
+                    from_user_id=listing.user_id,
+                    to_user_id=2,
+                    status=random.choice(logistics_statuses),
+                    expected_delivery=datetime.utcnow() + timedelta(days=random.randint(1, 14)),
+                    actual_delivery=datetime.utcnow() + timedelta(days=random.randint(1, 14)) if random.choice([True, False]) else None,
+                ) for listing in produce_listings if listing.status == "completed"
             ]
-            session.add_all(weather_data)
-
-            # Insert dummy market prices
-            markets = ["APMC Azadpur", "Koyambedu Market", "Vashi Market", "Gultekdi Market"]
-            market_prices = [
-                MarketPrice(
-                    crop=random.choice(crops),
-                    price=round(random.uniform(50.0, 500.0), 2),
-                    market=random.choice(markets),
-                    recorded_at=datetime.utcnow() - timedelta(days=random.randint(0, 30))
-                ) for _ in range(30)
-            ]
-            session.add_all(market_prices)
+            session.add_all(logistics)
 
         await session.commit()
 

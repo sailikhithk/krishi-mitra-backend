@@ -3,21 +3,20 @@ from sqlalchemy.orm import relationship
 from datetime import datetime
 from app.database import Base
 
-class Bid(Base):
-    __tablename__ = 'bids'
+class ProduceListing(Base):
+    __tablename__ = 'produce_listings'
 
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey('users.id'))
     crop = Column(String)
     quantity = Column(Float)
-    price = Column(Float)
-    status = Column(String)
+    base_price = Column(Float)
+    current_bid = Column(Float)
+    end_time = Column(DateTime)
+    status = Column(String)  # 'active', 'completed', 'cancelled'
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
-    # New fields
-    produce_listing_id = Column(Integer, ForeignKey('produce_listings.id'))
-    bid_amount = Column(Float)
-
-    user = relationship("User", back_populates="bids")
-    produce_listing = relationship("ProduceListing", back_populates="bids")
+    user = relationship("User", back_populates="produce_listings")
+    bids = relationship("Bid", back_populates="produce_listing")
+    logistics = relationship("Logistics", back_populates="produce_listing")

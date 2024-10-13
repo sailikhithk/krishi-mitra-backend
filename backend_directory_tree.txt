@@ -10,6 +10,8 @@ C:.
 |   generate_directory_tree.py
 |   insert_dummy_data.py
 |   inspect_db.py
+|   Krishi-Mitra Business Requirements V 1.0 10-4-2024.docx
+|   Krishimitra SRS V 1.0 VKT comments 10-4-2024.docx
 |   Makefile
 |   migrations_add_user_role.py
 |   postman_collection.json
@@ -18,8 +20,7 @@ C:.
 |   requirements.txt
 |   run.py
 |   setup.sh
-|   test_db_connection.py
-|               
+|   test_db_connection.py   
 +---alembic
 +---app
 |   |   config.py

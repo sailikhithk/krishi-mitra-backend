@@ -29,9 +29,17 @@ class User(Base):
     is_active = Column(Boolean, default=True)
     role = Column(Enum(UserRole), nullable=False)
     created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    farm_size = Column(Float)
+    location = Column(String)
+    company_name = Column(String)
+    business_type = Column(String)
+    department = Column(String)
+    access_level = Column(String)
     soil_health = relationship("SoilHealth", back_populates="user")
     bids = relationship("Bid", back_populates="user")
     schemes = relationship("Scheme", secondary=user_scheme, back_populates="users")
+    produce_listings = relationship("ProduceListing", back_populates="user")
 
 class SoilHealth(Base):
     __tablename__ = 'soil_health'
@@ -49,12 +57,15 @@ class Bid(Base):
     __tablename__ = 'bids'
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey('users.id'))
+    produce_listing_id = Column(Integer, ForeignKey('produce_listings.id'))
     crop = Column(String)
     quantity = Column(Float)
     price = Column(Float)
     status = Column(String)
     created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     user = relationship("User", back_populates="bids")
+    produce_listing = relationship("ProduceListing", back_populates="bids")
 
 class Scheme(Base):
     __tablename__ = 'schemes'
@@ -66,23 +77,37 @@ class Scheme(Base):
     created_at = Column(DateTime, default=datetime.utcnow)
     users = relationship("User", secondary=user_scheme, back_populates="schemes")
 
-class WeatherData(Base):
-    __tablename__ = 'weather_data'
+class ProduceListing(Base):
+    __tablename__ = 'produce_listings'
     id = Column(Integer, primary_key=True, index=True)
-    location = Column(String, index=True)
-    temperature = Column(Float)
-    humidity = Column(Float)
-    precipitation = Column(Float)
-    wind_speed = Column(Float)
-    recorded_at = Column(DateTime, default=datetime.utcnow)
+    user_id = Column(Integer, ForeignKey('users.id'))
+    crop = Column(String)
+    quantity = Column(Float)
+    base_price = Column(Float)
+    current_bid = Column(Float)
+    end_time = Column(DateTime)
+    status = Column(String)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    user = relationship("User", back_populates="produce_listings")
+    bids = relationship("Bid", back_populates="produce_listing")
+    logistics = relationship("Logistics", back_populates="produce_listing")
 
-class MarketPrice(Base):
-    __tablename__ = 'market_prices'
+class Logistics(Base):
+    __tablename__ = 'logistics'
     id = Column(Integer, primary_key=True, index=True)
-    crop = Column(String, index=True)
-    price = Column(Float)
-    market = Column(String)
-    recorded_at = Column(DateTime, default=datetime.utcnow)
+    order_number = Column(String, unique=True)
+    produce_listing_id = Column(Integer, ForeignKey('produce_listings.id'))
+    from_user_id = Column(Integer, ForeignKey('users.id'))
+    to_user_id = Column(Integer, ForeignKey('users.id'))
+    status = Column(String)
+    expected_delivery = Column(DateTime)
+    actual_delivery = Column(DateTime)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    produce_listing = relationship("ProduceListing", back_populates="logistics")
+    from_user = relationship("User", foreign_keys=[from_user_id])
+    to_user = relationship("User", foreign_keys=[to_user_id])
 
 async def get_db_schema():
     async with engine.connect() as conn:
@@ -95,7 +120,7 @@ async def get_db_schema():
 
 def get_model_schema():
     model_schema = {}
-    for model in [User, SoilHealth, Bid, Scheme, WeatherData, MarketPrice]:
+    for model in [User, SoilHealth, Bid, Scheme, ProduceListing, Logistics]:
         for column in model.__table__.columns:
             model_schema[(model.__tablename__, column.name)] = str(column.type)
     return model_schema
