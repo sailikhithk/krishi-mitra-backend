@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
-from app.routers import user, soil_health, bidding, scheme
+from app.routers import user, soil_health, bidding, scheme, produce_listing, logistics, payment
 from app.utils.access_control import requires_role
 from app.utils.auth import get_current_user
 from app.models.user import User
@@ -26,6 +26,9 @@ app.include_router(user.router, prefix="/users", tags=["users"])
 app.include_router(soil_health.router, prefix="/soil_health", tags=["soil_health"])
 app.include_router(bidding.router, prefix="/bids", tags=["bids"])
 app.include_router(scheme.router, prefix="/schemes", tags=["schemes"])
+app.include_router(produce_listing.router, prefix="/produce-listings", tags=["produce_listings"])
+app.include_router(logistics.router, prefix="/logistics", tags=["logistics"])
+app.include_router(payment.router, prefix="/payments", tags=["payments"])
 
 @app.get("/")
 async def root():
