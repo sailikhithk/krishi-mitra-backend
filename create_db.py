@@ -40,6 +40,7 @@ class User(Base):
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     phone_number = Column(String)
+    aadhar_card_url = Column(String)
     rating = Column(Float, default=0.0)
     farm_size = Column(Float)
     location = Column(String)

@@ -15,11 +15,11 @@ async def insert_data():
         async with session.begin():
             # Insert dummy users
             users = [
-                User(username="john_farmer", email="john@krishimitra.com", hashed_password=get_password_hash("1234"), role=UserRole.FARMER, farm_size=150.5, location="Anantapur", phone_number="+911234567890"),
-                User(username="jane_buyer", email="jane@krishimitra.com", hashed_password=get_password_hash("1234"), role=UserRole.BUYER, company_name="Jane's Agro", business_type="Wholesaler", phone_number="+919876543210"),
-                User(username="bob_farmer", email="bob@krishimitra.com", hashed_password=get_password_hash("1234"), role=UserRole.FARMER, farm_size=200.0, location="Chittoor", phone_number="+917890123456"),
-                User(username="alice_admin", email="alice@krishimitra.com", hashed_password=get_password_hash("1234"), role=UserRole.ADMIN, department="IT", access_level="Full", phone_number="+915678901234")
-            ]
+                    User(username="john_farmer", email="john@krishimitra.com", hashed_password=get_password_hash("1234"), role=UserRole.FARMER, farm_size=150.5, location="Anantapur", phone_number="+911234567890", aadhar_card_url="http://example.com/aadhar/john.jpg"),
+                    User(username="jane_buyer", email="jane@krishimitra.com", hashed_password=get_password_hash("1234"), role=UserRole.BUYER, company_name="Jane's Agro", business_type="Wholesaler", phone_number="+919876543210", aadhar_card_url="http://example.com/aadhar/jane.jpg"),
+                    User(username="bob_farmer", email="bob@krishimitra.com", hashed_password=get_password_hash("1234"), role=UserRole.FARMER, farm_size=200.0, location="Chittoor", phone_number="+917890123456", aadhar_card_url="http://example.com/aadhar/bob.jpg"),
+                    User(username="alice_admin", email="alice@krishimitra.com", hashed_password=get_password_hash("1234"), role=UserRole.ADMIN, department="IT", access_level="Full", phone_number="+915678901234", aadhar_card_url="http://example.com/aadhar/alice.jpg")
+                ]
             session.add_all(users)
             await session.flush()
 
