@@ -1,7 +1,7 @@
 import asyncio
 from sqlalchemy.ext.asyncio import create_async_engine
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String, Float, ForeignKey, DateTime, Boolean, Table, Enum, text
+from sqlalchemy import Column, Integer, String, Float, ForeignKey, DateTime, Boolean, Table, Enum, Text
 from sqlalchemy.orm import relationship
 from datetime import datetime
 from app.config import DATABASE_URL
@@ -14,6 +14,12 @@ class UserRole(enum.Enum):
     FARMER = "farmer"
     VENDOR = "vendor"
     ADMIN = "admin"
+
+class ProduceCategory(enum.Enum):
+    DAILY = "daily"
+    WEEKLY_MONTHLY = "weekly_monthly"
+    DRY_SPICES_NUTS = "dry_spices_nuts"
+    GRAINS = "grains"
 
 user_scheme = Table('user_scheme', Base.metadata,
     Column('user_id', Integer, ForeignKey('users.id')),
@@ -30,6 +36,8 @@ class User(Base):
     role = Column(Enum(UserRole), nullable=False)
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    phone_number = Column(String)
+    rating = Column(Float, default=0.0)
     farm_size = Column(Float)
     location = Column(String)
     company_name = Column(String)
@@ -62,10 +70,14 @@ class Bid(Base):
     quantity = Column(Float)
     price = Column(Float)
     status = Column(String)
+    acceptance_status = Column(String)
+    rejection_reason = Column(String)
+    delivery_address = Column(String)
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     user = relationship("User", back_populates="bids")
     produce_listing = relationship("ProduceListing", back_populates="bids")
+    payment = relationship("Payment", back_populates="bid", uselist=False)
 
 class Scheme(Base):
     __tablename__ = 'schemes'
@@ -82,16 +94,33 @@ class ProduceListing(Base):
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey('users.id'))
     crop = Column(String)
+    category = Column(Enum(ProduceCategory), nullable=False)
     quantity = Column(Float)
     base_price = Column(Float)
+    minimum_bid_price = Column(Float)
     current_bid = Column(Float)
+    govt_price = Column(Float)
     end_time = Column(DateTime)
     status = Column(String)
+    photo_urls = Column(String)
+    description = Column(Text)
+    pickup_location = Column(String)
+    distance = Column(Float)
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     user = relationship("User", back_populates="produce_listings")
     bids = relationship("Bid", back_populates="produce_listing")
     logistics = relationship("Logistics", back_populates="produce_listing")
+
+class Payment(Base):
+    __tablename__ = 'payments'
+    id = Column(Integer, primary_key=True, index=True)
+    bid_id = Column(Integer, ForeignKey('bids.id'))
+    amount = Column(Float)
+    upi_transaction_id = Column(String)
+    status = Column(String)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    bid = relationship("Bid", back_populates="payment")
 
 class Logistics(Base):
     __tablename__ = 'logistics'
@@ -103,6 +132,9 @@ class Logistics(Base):
     status = Column(String)
     expected_delivery = Column(DateTime)
     actual_delivery = Column(DateTime)
+    pickup_photo_url = Column(String)
+    delivery_photo_url = Column(String)
+    has_smartphone = Column(Boolean, default=True)
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     produce_listing = relationship("ProduceListing", back_populates="logistics")
@@ -120,7 +152,7 @@ async def get_db_schema():
 
 def get_model_schema():
     model_schema = {}
-    for model in [User, SoilHealth, Bid, Scheme, ProduceListing, Logistics]:
+    for model in [User, SoilHealth, Bid, Scheme, ProduceListing, Payment, Logistics]:
         for column in model.__table__.columns:
             model_schema[(model.__tablename__, column.name)] = str(column.type)
     return model_schema

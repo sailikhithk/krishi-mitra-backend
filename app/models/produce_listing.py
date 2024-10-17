@@ -20,3 +20,5 @@ class ProduceListing(Base):
     user = relationship("User", back_populates="produce_listings")
     bids = relationship("Bid", back_populates="produce_listing")
     logistics = relationship("Logistics", back_populates="produce_listing")
+    farmer_id = Column(Integer, ForeignKey('users.id'))
+    farmer = relationship("User", back_populates="produce_listings")

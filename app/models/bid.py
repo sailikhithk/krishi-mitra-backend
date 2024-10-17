@@ -8,16 +8,17 @@ class Bid(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     user_id = Column(Integer, ForeignKey('users.id'))
+    produce_listing_id = Column(Integer, ForeignKey('produce_listings.id'))
     crop = Column(String)
     quantity = Column(Float)
     price = Column(Float)
     status = Column(String)
+    acceptance_status = Column(String)
+    rejection_reason = Column(String)
+    delivery_address = Column(String)
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
-    # New fields
-    produce_listing_id = Column(Integer, ForeignKey('produce_listings.id'))
-    bid_amount = Column(Float)
-
     user = relationship("User", back_populates="bids")
     produce_listing = relationship("ProduceListing", back_populates="bids")
+    payment = relationship("Payment", back_populates="bid", uselist=False)

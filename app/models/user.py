@@ -6,7 +6,7 @@ import enum
 
 class UserRole(str, enum.Enum):
     FARMER = "farmer"
-    VENDOR = "vendor"
+    BUYER = "buyer"
     ADMIN = "admin"
 
 class User(Base):
@@ -17,15 +17,15 @@ class User(Base):
     email = Column(String, unique=True, index=True)
     hashed_password = Column(String)
     is_active = Column(Boolean, default=True)
-    role = Column(String, nullable=False)
+    role = Column(Enum(UserRole), nullable=False)
     created_at = Column(DateTime, default=datetime.utcnow)
-    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow)
     
     # Farmer specific fields
     farm_size = Column(Float)
     location = Column(String)
     
-    # Vendor specific fields
+    # Buyer specific fields
     company_name = Column(String)
     business_type = Column(String)
     
