@@ -4,7 +4,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 from typing import List
 from app.models.user import User, UserRole
-from app.schemas.user import UserCreate, UserRead, UserUpdate, Token
+from app.schemas.user import UserCreate, UserRead, UserUpdate, Token, UserProfileUpdate
 from app.database import get_async_session
 from app.utils.auth import authenticate_user, create_access_token, get_current_user, get_password_hash
 from datetime import timedelta
@@ -89,3 +89,23 @@ async def delete_user(user_id: int, session: AsyncSession = Depends(get_async_se
     await session.delete(user)
     await session.commit()
     return {"detail": "User deleted successfully"}
+
+@router.put("/me/profile", response_model=UserRead)
+async def update_user_profile(
+    profile_update: UserProfileUpdate,
+    current_user: User = Depends(get_current_user),
+    session: AsyncSession = Depends(get_async_session)
+):
+    for key, value in profile_update.dict(exclude_unset=True).items():
+        setattr(current_user, key, value)
+    await session.commit()
+    await session.refresh(current_user)
+    return current_user
+
+@router.get("/me/schemes", response_model=List[SchemeRead])
+async def get_user_schemes(
+    current_user: User = Depends(get_current_user),
+    session: AsyncSession = Depends(get_async_session)
+):
+    await session.refresh(current_user, attribute_names=['schemes'])
+    return current_user.schemes
