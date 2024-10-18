@@ -1,13 +1,16 @@
-from pydantic import BaseModel, Field
-from typing import List, Optional
 from datetime import datetime
 from enum import Enum
+from typing import Optional
+
+from pydantic import BaseModel
+
 
 class ProduceCategory(str, Enum):
     DAILY = "daily"
     WEEKLY_MONTHLY = "weekly_monthly"
     DRY_SPICES_NUTS = "dry_spices_nuts"
     GRAINS = "grains"
+
 
 class ProduceListingBase(BaseModel):
     crop: str
@@ -21,8 +24,10 @@ class ProduceListingBase(BaseModel):
     pickup_location: str
     distance: float
 
+
 class ProduceListingCreate(ProduceListingBase):
     photo_urls: str  # Comma-separated URLs
+
 
 class ProduceListingUpdate(BaseModel):
     crop: Optional[str] = None
@@ -39,6 +44,7 @@ class ProduceListingUpdate(BaseModel):
     pickup_location: Optional[str] = None
     distance: Optional[float] = None
 
+
 class ProduceListingRead(ProduceListingBase):
     id: int
     user_id: int
@@ -51,6 +57,7 @@ class ProduceListingRead(ProduceListingBase):
 
     class Config:
         from_attributes = True
+
 
 class ProduceListingResponse(ProduceListingRead):
     pass

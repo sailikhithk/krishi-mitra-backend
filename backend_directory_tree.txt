@@ -27,12 +27,12 @@ C:.
 |   run.py
 |   setup.sh
 |   test_db_connection.py
-|   
+|
 +---alembic
 |   |   env.py
 |   |   README
 |   |   script.py.mako
-|   |   
+|   |
 |   +---versions
 |   |   |   0a2b73b18c72_add_govt_price_and_other_missing_.py
 |   |   |   183fc480fd37_add_missing_columns_to_users_and_other_.py
@@ -52,16 +52,16 @@ C:.
 |   |   |   c92de5265454_add_phone_number_and_rating_columns_to_.py
 |   |   |   c938f9762f5f_add_updated_at_column_to_users_table.py
 |   |   |   e0b74e5a8d10_add_phone_number_and_other_missing_.py
-|   |   |   
-|   |           
-|           
+|   |   |
+|   |
+|
 +---app
 |   |   config.py
 |   |   database.py
 |   |   dependencies.py
 |   |   main.py
 |   |   __init__.py
-|   |   
+|   |
 |   +---crud
 |   |   |   bid.py
 |   |   |   logistics.py
@@ -69,8 +69,8 @@ C:.
 |   |   |   soil_health.py
 |   |   |   user.py
 |   |   |   __init__.py
-|   |   |   
-|   |           
+|   |   |
+|   |
 |   +---models
 |   |   |   base.py
 |   |   |   bid.py
@@ -83,8 +83,8 @@ C:.
 |   |   |   user.py
 |   |   |   weather_data.py
 |   |   |   __init__.py
-|   |   |   
-|   |           
+|   |   |
+|   |
 |   +---routers
 |   |   |   bidding.py
 |   |   |   logistics.py
@@ -94,8 +94,8 @@ C:.
 |   |   |   soil_health.py
 |   |   |   user.py
 |   |   |   __init__.py
-|   |   |   
-|   |           
+|   |   |
+|   |
 |   +---schemas
 |   |   |   bid.py
 |   |   |   logistics.py
@@ -105,17 +105,17 @@ C:.
 |   |   |   soil_health.py
 |   |   |   user.py
 |   |   |   __init__.py
-|   |   |   
-|   |           
+|   |   |
+|   |
 |   +---utils
 |   |   |   access_control.py
 |   |   |   auth.py
 |   |   |   helpers.py
 |   |   |   __init__.py
-|   |   |   
-|   |           
-|           
+|   |   |
+|   |
+|
 +---prompts
 |       project prompt
-|       
+|
 +---tests

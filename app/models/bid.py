@@ -1,14 +1,22 @@
-from sqlalchemy import Column, Integer, Float, ForeignKey, DateTime, String
-from sqlalchemy.orm import relationship
 from datetime import datetime
+
+from sqlalchemy import Column
+from sqlalchemy import DateTime
+from sqlalchemy import Float
+from sqlalchemy import ForeignKey
+from sqlalchemy import Integer
+from sqlalchemy import String
+from sqlalchemy.orm import relationship
+
 from app.database import Base
 
+
 class Bid(Base):
-    __tablename__ = 'bids'
+    __tablename__ = "bids"
 
     id = Column(Integer, primary_key=True, index=True)
-    user_id = Column(Integer, ForeignKey('users.id'))
-    produce_listing_id = Column(Integer, ForeignKey('produce_listings.id'))
+    user_id = Column(Integer, ForeignKey("users.id"))
+    produce_listing_id = Column(Integer, ForeignKey("produce_listings.id"))
     crop = Column(String)
     quantity = Column(Float)
     price = Column(Float)

@@ -1,6 +1,8 @@
-from pydantic import BaseModel
-from typing import Optional
 from datetime import datetime
+from typing import Optional
+
+from pydantic import BaseModel
+
 
 class BidBase(BaseModel):
     user_id: int
@@ -13,8 +15,10 @@ class BidBase(BaseModel):
     rejection_reason: Optional[str] = None
     delivery_address: Optional[str] = None
 
+
 class BidCreate(BidBase):
     pass
+
 
 class BidUpdate(BaseModel):
     quantity: Optional[float] = None
@@ -24,6 +28,7 @@ class BidUpdate(BaseModel):
     rejection_reason: Optional[str] = None
     delivery_address: Optional[str] = None
 
+
 class BidRead(BidBase):
     id: int
     created_at: datetime
@@ -31,6 +36,7 @@ class BidRead(BidBase):
 
     class Config:
         from_attributes = True
+
 
 class BidResponse(BidRead):
     pass

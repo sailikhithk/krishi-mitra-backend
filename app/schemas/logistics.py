@@ -1,6 +1,8 @@
-from pydantic import BaseModel
-from typing import Optional
 from datetime import datetime
+from typing import Optional
+
+from pydantic import BaseModel
+
 
 class LogisticsBase(BaseModel):
     order_number: str
@@ -14,14 +16,17 @@ class LogisticsBase(BaseModel):
     delivery_photo_url: Optional[str] = None
     has_smartphone: bool
 
+
 class LogisticsCreate(LogisticsBase):
     pass
+
 
 class LogisticsUpdate(BaseModel):
     status: Optional[str] = None
     actual_delivery: Optional[datetime] = None
     pickup_photo_url: Optional[str] = None
     delivery_photo_url: Optional[str] = None
+
 
 class LogisticsRead(LogisticsBase):
     id: int
@@ -30,6 +35,7 @@ class LogisticsRead(LogisticsBase):
 
     class Config:
         from_attributes = True
+
 
 class LogisticsResponse(LogisticsRead):
     pass

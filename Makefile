@@ -31,4 +31,4 @@ tree_windows:
 
 run:
 	venv\Scripts\activate
-	uvicorn app.main:app --reload 
+	uvicorn app.main:app --reload

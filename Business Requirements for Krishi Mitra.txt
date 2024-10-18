@@ -2,15 +2,15 @@ Business Requirements for Krishi Mitra
 
 Krishi Mitra Portal will be aiming at the below mentioned business in three different Phases:
 
-Phase 1: 
+Phase 1:
 
 Farmer:
 
-   Farmer should be able to list the produce using photographs, sell his agricultural produce 
+   Farmer should be able to list the produce using photographs, sell his agricultural produce
        via Online bidding with a max variance of 10-15% as per the Government listed daily price.
-  
+
        Agricultural Produce will be constituting the below various kinds of Produce:
-       
+
 
 1.	Daily Produce (Should be limited for transport upto 50KM’s)
 •	Green Leafy Vegetables
@@ -32,7 +32,7 @@ Farmer:
 
 Buyer:
 
-       Buyer should be able to bid the produce listed by the Farmer and should be able to  
+       Buyer should be able to bid the produce listed by the Farmer and should be able to
        schedule the schedule transport using the listed Logistic personnel in the app.
 
 1.	Should be able to view the produce listed by farmers based on the type of produce and distance
@@ -44,9 +44,9 @@ Buyer:
 
 Delivery / Logistics:
 
-        Delivery / Logistics personnel should be able to pickup the produce from Farmer and 
-        deliver it to the Buyer. Logistics Personnel should be housing a Smart Phone so as to be 
-        available for tracking via the application . Should be able to upload the picture of Produce 
+        Delivery / Logistics personnel should be able to pickup the produce from Farmer and
+        deliver it to the Buyer. Logistics Personnel should be housing a Smart Phone so as to be
+        available for tracking via the application . Should be able to upload the picture of Produce
         Pickup and Deliver
 
 

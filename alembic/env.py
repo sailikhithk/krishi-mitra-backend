@@ -2,11 +2,10 @@ from logging.config import fileConfig
 
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
-from sqlalchemy import create_engine
-from app.models import Base
-from app.config import DATABASE_URL
 
 from alembic import context
+from app.config import DATABASE_URL
+from app.models import Base
 
 
 # this is the Alembic Config object, which provides
@@ -56,7 +55,9 @@ def run_migrations_offline() -> None:
 
 def run_migrations_online():
     configuration = config.get_section(config.config_ini_section)
-    configuration['sqlalchemy.url'] = str(DATABASE_URL).replace('postgresql+asyncpg', 'postgresql')
+    configuration["sqlalchemy.url"] = str(DATABASE_URL).replace(
+        "postgresql+asyncpg", "postgresql"
+    )
     connectable = engine_from_config(
         configuration,
         prefix="sqlalchemy.",
@@ -64,10 +65,7 @@ def run_migrations_online():
     )
 
     with connectable.connect() as connection:
-        context.configure(
-            connection=connection,
-            target_metadata=target_metadata
-        )
+        context.configure(connection=connection, target_metadata=target_metadata)
 
         with context.begin_transaction():
             context.run_migrations()

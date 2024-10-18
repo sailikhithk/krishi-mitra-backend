@@ -1,7 +1,11 @@
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
+
 from app.models.bid import Bid
-from app.schemas.bid import BidCreate, BidResponse, BidUpdate
+from app.schemas.bid import BidCreate
+from app.schemas.bid import BidResponse
+from app.schemas.bid import BidUpdate
+
 
 async def create_bid(session: AsyncSession, data: BidCreate) -> BidResponse:
     """
@@ -20,6 +24,7 @@ async def create_bid(session: AsyncSession, data: BidCreate) -> BidResponse:
     await session.refresh(bid)
     return bid
 
+
 async def get_bid(session: AsyncSession, bid_id: int) -> BidResponse:
     result = await session.execute(select(Bid).where(Bid.id == bid_id))
     bid = result.scalars().first()
@@ -27,7 +32,10 @@ async def get_bid(session: AsyncSession, bid_id: int) -> BidResponse:
         return None
     return bid
 
-async def update_bid(session: AsyncSession, bid_id: int, data: BidUpdate) -> BidResponse:
+
+async def update_bid(
+    session: AsyncSession, bid_id: int, data: BidUpdate
+) -> BidResponse:
     """
     Update an existing bid in the database.
 
@@ -47,6 +55,7 @@ async def update_bid(session: AsyncSession, bid_id: int, data: BidUpdate) -> Bid
         await session.commit()
         await session.refresh(bid)
     return bid
+
 
 async def delete_bid(session: AsyncSession, bid_id: int) -> bool:
     """

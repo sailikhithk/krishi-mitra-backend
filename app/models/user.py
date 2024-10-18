@@ -1,8 +1,18 @@
-from sqlalchemy import Column, Integer, String, Boolean, DateTime, Enum, Float, Text, JSON
-from sqlalchemy.orm import relationship
-from datetime import datetime
-from app.database import Base
 import enum
+from datetime import datetime
+
+from sqlalchemy import Boolean
+from sqlalchemy import Column
+from sqlalchemy import DateTime
+from sqlalchemy import Enum
+from sqlalchemy import Float
+from sqlalchemy import Integer
+from sqlalchemy import JSON
+from sqlalchemy import String
+from sqlalchemy.orm import relationship
+
+from app.database import Base
+
 
 class UserRole(str, enum.Enum):
     FARMER = "farmer"
@@ -10,8 +20,9 @@ class UserRole(str, enum.Enum):
     ADMIN = "admin"
     LOGISTICS = "logistics"
 
+
 class User(Base):
-    __tablename__ = 'users'
+    __tablename__ = "users"
 
     id = Column(Integer, primary_key=True, index=True)
     username = Column(String, unique=True, index=True)
@@ -22,12 +33,12 @@ class User(Base):
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow)
     phone_number = Column(String, unique=True, index=True)
-    
+
     # Common fields
     full_name = Column(String)
     address = Column(String)
     aadhar_card_url = Column(String)  # URL to stored Aadhar card image
-    
+
     # Farmer specific fields
     farm_size = Column(Float)
     location = Column(String)
@@ -36,16 +47,16 @@ class User(Base):
     crop_specialization = Column(JSON)  # Store as a list of strings
     certifications = Column(JSON)  # Store as a list of strings
     bank_account_details = Column(JSON)  # Store as a dictionary
-    
+
     # Buyer specific fields
     company_name = Column(String)
     business_type = Column(String)
-    
+
     # Logistics specific fields
     vehicle_type = Column(String)
     vehicle_number = Column(String)
     has_smartphone = Column(Boolean, default=False)
-    
+
     # Admin specific fields
     department = Column(String)
     access_level = Column(String)

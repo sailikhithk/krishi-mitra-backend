@@ -1,8 +1,17 @@
-from sqlalchemy import Column, Integer, Float, ForeignKey, DateTime, String, Enum
-from sqlalchemy.orm import relationship
-from datetime import datetime
-from app.database import Base
 import enum
+from datetime import datetime
+
+from sqlalchemy import Column
+from sqlalchemy import DateTime
+from sqlalchemy import Enum
+from sqlalchemy import Float
+from sqlalchemy import ForeignKey
+from sqlalchemy import Integer
+from sqlalchemy import String
+from sqlalchemy.orm import relationship
+
+from app.database import Base
+
 
 class ProduceCategory(enum.Enum):
     DAILY = "daily"
@@ -10,11 +19,12 @@ class ProduceCategory(enum.Enum):
     DRY_SPICES_NUTS = "dry_spices_nuts"
     GRAINS = "grains"
 
+
 class ProduceListing(Base):
-    __tablename__ = 'produce_listings'
+    __tablename__ = "produce_listings"
 
     id = Column(Integer, primary_key=True, index=True)
-    user_id = Column(Integer, ForeignKey('users.id'))
+    user_id = Column(Integer, ForeignKey("users.id"))
     crop = Column(String)
     category = Column(Enum(ProduceCategory), nullable=False)
     quantity = Column(Float)
@@ -34,5 +44,7 @@ class ProduceListing(Base):
     user = relationship("User", back_populates="produce_listings")
     bids = relationship("Bid", back_populates="produce_listing")
     logistics = relationship("Logistics", back_populates="produce_listing")
-    farmer_id = Column(Integer, ForeignKey('users.id'))
-    farmer = relationship("User", foreign_keys=[farmer_id], back_populates="farmer_produce_listings")
+    farmer_id = Column(Integer, ForeignKey("users.id"))
+    farmer = relationship(
+        "User", foreign_keys=[farmer_id], back_populates="farmer_produce_listings"
+    )

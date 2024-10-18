@@ -1,16 +1,24 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, Boolean
-from sqlalchemy.orm import relationship
 from datetime import datetime
+
+from sqlalchemy import Boolean
+from sqlalchemy import Column
+from sqlalchemy import DateTime
+from sqlalchemy import ForeignKey
+from sqlalchemy import Integer
+from sqlalchemy import String
+from sqlalchemy.orm import relationship
+
 from app.database import Base
 
+
 class Logistics(Base):
-    __tablename__ = 'logistics'
+    __tablename__ = "logistics"
 
     id = Column(Integer, primary_key=True, index=True)
     order_number = Column(String, unique=True)
-    produce_listing_id = Column(Integer, ForeignKey('produce_listings.id'))
-    buyer_id = Column(Integer, ForeignKey('users.id'))
-    farmer_id = Column(Integer, ForeignKey('users.id'))
+    produce_listing_id = Column(Integer, ForeignKey("produce_listings.id"))
+    buyer_id = Column(Integer, ForeignKey("users.id"))
+    farmer_id = Column(Integer, ForeignKey("users.id"))
     status = Column(String)  # 'pending', 'in_transit', 'delivered', 'cancelled'
     expected_delivery = Column(DateTime)
     actual_delivery = Column(DateTime)

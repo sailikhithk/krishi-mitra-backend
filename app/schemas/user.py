@@ -1,13 +1,20 @@
-from pydantic import BaseModel, EmailStr, Field, HttpUrl
-from typing import Optional, List, Dict
 from datetime import datetime
 from enum import Enum
+from typing import Dict
+from typing import List
+from typing import Optional
+
+from pydantic import BaseModel
+from pydantic import EmailStr
+from pydantic import HttpUrl
+
 
 class UserRole(str, Enum):
     FARMER = "farmer"
     BUYER = "buyer"
     ADMIN = "admin"
     LOGISTICS = "logistics"
+
 
 class UserBase(BaseModel):
     username: str
@@ -16,10 +23,12 @@ class UserBase(BaseModel):
     phone_number: str
     address: str
 
+
 class UserCreate(UserBase):
     password: str
     role: UserRole
     aadhar_card_url: HttpUrl
+
 
 class FarmerProfileCreate(BaseModel):
     farm_size: float
@@ -30,18 +39,22 @@ class FarmerProfileCreate(BaseModel):
     certifications: List[str]
     bank_account_details: Dict[str, str]
 
+
 class BuyerProfileCreate(BaseModel):
     company_name: str
     business_type: str
+
 
 class LogisticsProfileCreate(BaseModel):
     vehicle_type: str
     vehicle_number: str
     has_smartphone: bool
 
+
 class UserUpdate(UserBase):
     hashed_password: Optional[str] = None
     is_active: Optional[bool] = None
+
 
 class UserProfileUpdate(BaseModel):
     full_name: Optional[str] = None
@@ -59,6 +72,7 @@ class UserProfileUpdate(BaseModel):
     vehicle_type: Optional[str] = None
     vehicle_number: Optional[str] = None
     has_smartphone: Optional[bool] = None
+
 
 class UserRead(UserBase):
     id: int
@@ -82,12 +96,15 @@ class UserRead(UserBase):
     class Config:
         from_attributes = True
 
+
 class UserResponse(UserRead):
     pass
+
 
 class Token(BaseModel):
     access_token: str
     token_type: str
+
 
 class TokenData(BaseModel):
     username: Optional[str] = None

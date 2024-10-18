@@ -1,6 +1,7 @@
-from pydantic import BaseModel
-from typing import Optional
 from datetime import datetime
+
+from pydantic import BaseModel
+
 
 class SoilHealthBase(BaseModel):
     user_id: int
@@ -10,11 +11,14 @@ class SoilHealthBase(BaseModel):
     potassium: float
     organic_matter: float
 
+
 class SoilHealthCreate(SoilHealthBase):
     pass
 
+
 class SoilHealthUpdate(SoilHealthBase):
     pass
+
 
 class SoilHealthRead(SoilHealthBase):
     id: int
