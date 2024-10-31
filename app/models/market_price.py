@@ -1,6 +1,13 @@
-from sqlalchemy import Column, DateTime, Float, Integer, String
 from datetime import datetime
+
+from sqlalchemy import Column
+from sqlalchemy import DateTime
+from sqlalchemy import Float
+from sqlalchemy import Integer
+from sqlalchemy import String
+
 from app.models.base import Base
+
 
 class MarketPrice(Base):
     __tablename__ = "market_prices"

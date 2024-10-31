@@ -82,21 +82,23 @@ Krishi Mitra is an agricultural application designed to provide farmers with ess
 ## Setup and Installation
 
 1. **Clone the repository**:
-    ```sh
-    git clone https://github.com/yourusername/krishi-mitra-backend.git
-    cd krishi-mitra-backend
-    ```
+
+   ```sh
+   git clone https://github.com/yourusername/krishi-mitra-backend.git
+   cd krishi-mitra-backend
+   ```
 
 2. **Create a virtual environment and activate it**:
-    ```sh
-    python -m venv venv
-    source venv/bin/activate   # On Windows use `venv\Scripts\activate`
-    ```
+
+   ```sh
+   python -m venv venv
+   source venv/bin/activate   # On Windows use `venv\Scripts\activate`
+   ```
 
 3. **Install dependencies**:
-    ```sh
-    pip install -r requirements.txt
-    ```
+   ```sh
+   pip install -r requirements.txt
+   ```
 
 ## Environment Variables
 
@@ -194,6 +196,10 @@ To run tests, execute:
 ```sh
 pytest
 ```
+
+## Database Fix:
+
+whenever database is not connecting, we need to open services.msc in Win+R and then start the postgres services
 
 ## License
 

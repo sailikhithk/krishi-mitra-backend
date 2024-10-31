@@ -1,0 +1,70 @@
+Krishi Mitra Farmer Portal Checklist
+User Management and Profile
+
+ Implement secure sign-up process with email/OTP verification
+ Create password reset functionality
+ Develop profile management system
+
+ Personal details (name, contact information, address)
+ Farm details (location, size, soil type, irrigation facilities, type of crop)
+ Crop specialization and history
+ Certifications and awards
+ Bank account details for payments / UPI Integration
+
+
+ Add Aadhar card upload functionality during registration
+
+Dashboard
+5. [ ] Create overview of active listings, ongoing auctions, and recent transactions
+6. [x] Implement quick access to create new listings
+7. [ ] Develop notification system for bids, messages, and important updates
+8. [ ] Display summary of earnings and pending payments
+9. [ ] Show payment status
+10. [ ] Implement delivery status tracking
+Produce Listing and Auction Management
+11. [x] Develop step-by-step wizard for creating new produce listings
+12. [x] Include fields for produce type, quantity, quality grade, expected harvest date
+13. [x] Allow multiple high-quality images and videos upload (mandatory)
+14. [x] Implement minimum bid price generation based on government daily pricing
+15. [x] Ensure bid price doesn't exceed 10-15% variance from minimum price
+16. [x] Create auction duration settings (start time, end time, auto-extension options)
+17. [x] Add functionality to take down listings
+18. [x] Implement real-time updates on bidding activity
+19. [ ] Develop visual representation of bid history (e.g., graph of bid prices over time)
+20. [ ] Create alert system for new bids, outbids, and auction closing
+21. [ ] Implement built-in messaging system to communicate with bidders
+Post-Auction Actions
+22. [x] Develop system to review highest bid details and bidder information
+23. [x] Allow accepting or rejecting winning bids with reason
+24. [ ] Implement automatic relisting options for unsold produce
+25. [ ] Create feedback system for rating transactions and buyers
+26. [x] Add functionality to upload pictures after loading produce into vehicle
+27. [x] Implement delivery process tracking
+Inventory and Crop Management
+28. [x] Develop real-time update system for current stock levels
+29. [x] Implement categorization by crop type, harvest date, and quality grade
+30. [ ] Create low stock alerts and automatic listing suggestions
+Produce Types (Phase 1)
+31. [x] Implement listing system for daily produce (transport up to 50km)
+32. [x] Implement listing system for weekly/monthly produce
+33. [x] Implement listing system for dry spices & nuts
+34. [x] Implement listing system for grains
+Bidding and Payment
+35. [x] Implement system for farmers to accept or reject bids based on quantity (not price)
+36. [x] Integrate UPI payment system for farmers to receive payments
+Logistics
+37. [x] Implement system for farmers to track delivery
+38. [ ] Create designated locations (Krishi Mitra or Panchayat Office) for produce packing and loading
+Additional Tasks
+39. [x] Update bidding system
+40. [x] Implement logistics system
+41. [x] Implement payment system
+
+ Write unit tests for all endpoints
+ Perform integration testing
+ Update API documentation (if using Swagger/OpenAPI)
+ Create user guide or README for the backend
+ Set up deployment pipeline
+ Configure production environment
+ Implement comprehensive logging throughout the application
+ Set up monitoring for the application

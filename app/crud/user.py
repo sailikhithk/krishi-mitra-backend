@@ -1,17 +1,17 @@
 """
 Module for user-related CRUD operations.
 """
-
 import logging
-
-logger = logging.getLogger(__name__)
 
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
-from app.utils.auth import get_password_hash
 
 from app.models.user import User
-from app.schemas.user import UserCreate, UserResponse
+from app.schemas.user import UserCreate
+from app.schemas.user import UserResponse
+from app.utils.auth import get_password_hash
+
+logger = logging.getLogger(__name__)
 
 
 async def create_user(session: AsyncSession, data: UserCreate) -> UserResponse:

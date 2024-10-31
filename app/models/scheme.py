@@ -1,15 +1,25 @@
-from sqlalchemy import Column, Integer, String, DateTime, Table, ForeignKey
-from sqlalchemy.orm import relationship
 from datetime import datetime
+
+from sqlalchemy import Column
+from sqlalchemy import DateTime
+from sqlalchemy import ForeignKey
+from sqlalchemy import Integer
+from sqlalchemy import String
+from sqlalchemy import Table
+from sqlalchemy.orm import relationship
+
 from app.database import Base
 
-user_scheme = Table('user_scheme', Base.metadata,
-    Column('user_id', Integer, ForeignKey('users.id')),
-    Column('scheme_id', Integer, ForeignKey('schemes.id'))
+user_scheme = Table(
+    "user_scheme",
+    Base.metadata,
+    Column("user_id", Integer, ForeignKey("users.id")),
+    Column("scheme_id", Integer, ForeignKey("schemes.id")),
 )
 
+
 class Scheme(Base):
-    __tablename__ = 'schemes'
+    __tablename__ = "schemes"
 
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, unique=True, index=True)

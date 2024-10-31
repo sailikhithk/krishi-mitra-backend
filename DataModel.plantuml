@@ -1,0 +1,143 @@
+@startuml Krishi Mitra Data Model
+
+!define TABLE_BORDER_COLOR #073B4C
+!define TABLE_HEADER_COLOR #118AB2
+!define TABLE_ROW_COLOR #FFFFFF
+!define ENUM_COLOR #FFD166
+
+skinparam class {
+    BackgroundColor TABLE_ROW_COLOR
+    BorderColor TABLE_BORDER_COLOR
+    HeaderBackgroundColor TABLE_HEADER_COLOR
+}
+
+enum UserRole {
+    FARMER
+    VENDOR
+    ADMIN
+}
+
+enum ProduceCategory {
+    DAILY
+    WEEKLY_MONTHLY
+    DRY_SPICES_NUTS
+    GRAINS
+}
+
+class User {
+    +id: Integer
+    username: String
+    email: String
+    hashed_password: String
+    is_active: Boolean
+    role: UserRole
+    created_at: DateTime
+    updated_at: DateTime
+    phone_number: String
+    rating: Float
+    farm_size: Float
+    location: String
+    company_name: String
+    business_type: String
+    department: String
+    access_level: String
+}
+
+class SoilHealth {
+    +id: Integer
+    user_id: Integer
+    ph: Float
+    nitrogen: Float
+    phosphorus: Float
+    potassium: Float
+    organic_matter: Float
+    created_at: DateTime
+}
+
+class Scheme {
+    +id: Integer
+    name: String
+    description: String
+    eligibility: String
+    benefits: String
+    created_at: DateTime
+}
+
+class Bid {
+    +id: Integer
+    user_id: Integer
+    produce_listing_id: Integer
+    crop: String
+    quantity: Float
+    price: Float
+    status: String
+    acceptance_status: String
+    rejection_reason: String
+    delivery_address: String
+    created_at: DateTime
+    updated_at: DateTime
+}
+
+class ProduceListing {
+    +id: Integer
+    user_id: Integer
+    crop: String
+    category: ProduceCategory
+    quantity: Float
+    base_price: Float
+    minimum_bid_price: Float
+    current_bid: Float
+    govt_price: Float
+    end_time: DateTime
+    status: String
+    photo_urls: String
+    description: Text
+    pickup_location: String
+    distance: Float
+    created_at: DateTime
+    updated_at: DateTime
+}
+
+class Payment {
+    +id: Integer
+    bid_id: Integer
+    amount: Float
+    upi_transaction_id: String
+    status: String
+    created_at: DateTime
+}
+
+class Logistics {
+    +id: Integer
+    order_number: String
+    bid_id: Integer
+    buyer_id: Integer
+    farmer_id: Integer
+    status: String
+    expected_pickup: DateTime
+    actual_pickup: DateTime
+    expected_delivery: DateTime
+    actual_delivery: DateTime
+    pickup_photo_url: String
+    delivery_photo_url: String
+    transporter_name: String
+    transporter_phone: String
+    transporter_vehicle: String
+    created_at: DateTime
+    updated_at: DateTime
+}
+
+User "1" -- "0..*" SoilHealth : has
+User "1" -- "0..*" Bid : places
+User "1" -- "0..*" ProduceListing : lists
+User "0..*" -- "0..*" Scheme : participates in
+Bid "1" -- "0..1" Payment : has
+Bid "1" -- "0..1" Logistics : has
+ProduceListing "1" -- "0..*" Bid : receives
+Logistics "0..*" -- "1" User : buyer
+Logistics "0..*" -- "1" User : farmer
+
+User .. UserRole
+ProduceListing .. ProduceCategory
+
+@enduml

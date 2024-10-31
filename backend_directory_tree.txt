@@ -4,74 +4,118 @@ C:.
 |   .env
 |   .gitignore
 |   .pre-commit-config.yaml
+|   alembic.ini
 |   backend_directory_tree.txt
+|   Business Requirements for Krishi Mitra.txt
 |   compare_schemas.py
 |   create_db.py
+|   DB UML.png
+|   drop_tables.py
 |   generate_directory_tree.py
 |   insert_dummy_data.py
 |   inspect_db.py
+|   Krishi Mitra - MVP Checklist.md
+|   Krishi-Mitra Business Requirements V 1.0 10-4-2024.docx
+|   Krishimitra SRS V 1.0 VKT comments 10-4-2024.docx
 |   Makefile
 |   migrations_add_user_role.py
 |   postman_collection.json
+|   project technical checklist.txt
 |   project_checklist.md
-|   README_backend.md
+|   README.md
 |   requirements.txt
 |   run.py
 |   setup.sh
 |   test_db_connection.py
-|               
+|
 +---alembic
+|   |   env.py
+|   |   README
+|   |   script.py.mako
+|   |
+|   +---versions
+|   |   |   0a2b73b18c72_add_govt_price_and_other_missing_.py
+|   |   |   183fc480fd37_add_missing_columns_to_users_and_other_.py
+|   |   |   1b3a9ec1ca46_add_pickup_photo_url_and_other_missing_.py
+|   |   |   1c219f3f4b54_add_has_smartphone_and_other_missing_.py
+|   |   |   3710d6ff8d9e_add_phone_number_to_users_table.py
+|   |   |   50abc0b8dbd7_add_acceptance_status_and_other_missing_.py
+|   |   |   6384cfe59672_add_delivery_address_and_other_missing_.py
+|   |   |   6586b71b53d0_add_photo_urls_and_other_missing_.py
+|   |   |   6a3d92dceef1_add_phone_number_and_other_missing_.py
+|   |   |   6e813b9842ad_add_category_and_other_missing_columns_.py
+|   |   |   74a14b10a63b_add_delivery_photo_url_and_other_.py
+|   |   |   85e7671293ec_add_minimum_bid_price_and_other_missing_.py
+|   |   |   93d6f77f7c1a_add_description_and_other_missing_.py
+|   |   |   c76282fe9ffd_add_missing_columns_to_users_and_.py
+|   |   |   c841afafa87e_add_rejection_reason_and_other_missing_.py
+|   |   |   c92de5265454_add_phone_number_and_rating_columns_to_.py
+|   |   |   c938f9762f5f_add_updated_at_column_to_users_table.py
+|   |   |   e0b74e5a8d10_add_phone_number_and_other_missing_.py
+|   |   |
+|   |
+|
 +---app
 |   |   config.py
 |   |   database.py
 |   |   dependencies.py
 |   |   main.py
 |   |   __init__.py
-|   |   
+|   |
 |   +---crud
 |   |   |   bid.py
+|   |   |   logistics.py
 |   |   |   scheme.py
 |   |   |   soil_health.py
 |   |   |   user.py
 |   |   |   __init__.py
-|   |   |   
-|   |           
+|   |   |
+|   |
 |   +---models
 |   |   |   base.py
 |   |   |   bid.py
+|   |   |   logistics.py
 |   |   |   market_price.py
+|   |   |   payment.py
+|   |   |   produce_listing.py
 |   |   |   scheme.py
 |   |   |   soil_health.py
 |   |   |   user.py
 |   |   |   weather_data.py
 |   |   |   __init__.py
-|   |   |   
-|   |           
+|   |   |
+|   |
 |   +---routers
 |   |   |   bidding.py
+|   |   |   logistics.py
+|   |   |   payment.py
+|   |   |   produce_listing.py
 |   |   |   scheme.py
 |   |   |   soil_health.py
 |   |   |   user.py
 |   |   |   __init__.py
-|   |   |   
-|   |           
+|   |   |
+|   |
 |   +---schemas
 |   |   |   bid.py
+|   |   |   logistics.py
+|   |   |   payment.py
+|   |   |   produce_listing.py
 |   |   |   scheme.py
 |   |   |   soil_health.py
 |   |   |   user.py
 |   |   |   __init__.py
-|   |   |   
-|   |           
+|   |   |
+|   |
 |   +---utils
 |   |   |   access_control.py
 |   |   |   auth.py
 |   |   |   helpers.py
 |   |   |   __init__.py
-|   |   |   
-|   |           
-|           
+|   |   |
+|   |
+|
 +---prompts
 |       project prompt
-|       
+|
 +---tests

@@ -1,347 +1,292 @@
 {
-    "info": {
-      "_postman_id": "your-postman-id",
-      "name": "Krishi Mitra API",
-      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  "info": {
+    "_postman_id": "your-postman-id",
+    "name": "Krishi Mitra API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"username\": \"john_doe\",\n    \"password\": \"password123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/auth/login",
+              "host": ["{{base_url}}"],
+              "path": ["auth", "login"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"username\": \"new_user\",\n    \"email\": \"new_user@example.com\",\n    \"password\": \"password123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/auth/register",
+              "host": ["{{base_url}}"],
+              "path": ["auth", "register"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Reset Password Request",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"john@example.com\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/auth/reset-password-request",
+              "host": ["{{base_url}}"],
+              "path": ["auth", "reset-password-request"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Reset Password Confirm",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"token\": \"your-reset-token\",\n    \"new_password\": \"new_password123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/auth/reset-password-confirm",
+              "host": ["{{base_url}}"],
+              "path": ["auth", "reset-password-confirm"]
+            }
+          },
+          "response": []
+        }
+      ]
     },
-    "item": [
-      {
-        "name": "Auth",
-        "item": [
-          {
-            "name": "Login",
-            "request": {
-              "method": "POST",
-              "header": [],
-              "body": {
-                "mode": "raw",
-                "raw": "{\n    \"username\": \"john_doe\",\n    \"password\": \"password123\"\n}",
-                "options": {
-                  "raw": {
-                    "language": "json"
-                  }
-                }
-              },
-              "url": {
-                "raw": "{{base_url}}/auth/login",
-                "host": [
-                  "{{base_url}}"
-                ],
-                "path": [
-                  "auth",
-                  "login"
-                ]
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "Get User",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}",
+                "type": "text"
               }
-            },
-            "response": []
+            ],
+            "url": {
+              "raw": "{{base_url}}/users/me",
+              "host": ["{{base_url}}"],
+              "path": ["users", "me"]
+            }
           },
-          {
-            "name": "Register",
-            "request": {
-              "method": "POST",
-              "header": [],
-              "body": {
-                "mode": "raw",
-                "raw": "{\n    \"username\": \"new_user\",\n    \"email\": \"new_user@example.com\",\n    \"password\": \"password123\"\n}",
-                "options": {
-                  "raw": {
-                    "language": "json"
-                  }
-                }
-              },
-              "url": {
-                "raw": "{{base_url}}/auth/register",
-                "host": [
-                  "{{base_url}}"
-                ],
-                "path": [
-                  "auth",
-                  "register"
-                ]
-              }
-            },
-            "response": []
-          },
-          {
-            "name": "Reset Password Request",
-            "request": {
-              "method": "POST",
-              "header": [],
-              "body": {
-                "mode": "raw",
-                "raw": "{\n    \"email\": \"john@example.com\"\n}",
-                "options": {
-                  "raw": {
-                    "language": "json"
-                  }
-                }
-              },
-              "url": {
-                "raw": "{{base_url}}/auth/reset-password-request",
-                "host": [
-                  "{{base_url}}"
-                ],
-                "path": [
-                  "auth",
-                  "reset-password-request"
-                ]
-              }
-            },
-            "response": []
-          },
-          {
-            "name": "Reset Password Confirm",
-            "request": {
-              "method": "POST",
-              "header": [],
-              "body": {
-                "mode": "raw",
-                "raw": "{\n    \"token\": \"your-reset-token\",\n    \"new_password\": \"new_password123\"\n}",
-                "options": {
-                  "raw": {
-                    "language": "json"
-                  }
-                }
-              },
-              "url": {
-                "raw": "{{base_url}}/auth/reset-password-confirm",
-                "host": [
-                  "{{base_url}}"
-                ],
-                "path": [
-                  "auth",
-                  "reset-password-confirm"
-                ]
-              }
-            },
-            "response": []
-          }
-        ]
-      },
-      {
-        "name": "Users",
-        "item": [
-          {
-            "name": "Get User",
-            "request": {
-              "method": "GET",
-              "header": [
-                {
-                  "key": "Authorization",
-                  "value": "Bearer {{access_token}}",
-                  "type": "text"
-                }
-              ],
-              "url": {
-                "raw": "{{base_url}}/users/me",
-                "host": [
-                  "{{base_url}}"
-                ],
-                "path": [
-                  "users",
-                  "me"
-                ]
-              }
-            },
-            "response": []
-          }
-        ]
-      },
-      {
-        "name": "Schemes",
-        "item": [
-          {
-            "name": "Get All Schemes",
-            "request": {
-              "method": "GET",
-              "header": [
-                {
-                  "key": "Authorization",
-                  "value": "Bearer {{access_token}}",
-                  "type": "text"
-                }
-              ],
-              "url": {
-                "raw": "{{base_url}}/schemes",
-                "host": [
-                  "{{base_url}}"
-                ],
-                "path": [
-                  "schemes"
-                ]
-              }
-            },
-            "response": []
-          },
-          {
-            "name": "Get Scheme by ID",
-            "request": {
-              "method": "GET",
-              "header": [
-                {
-                  "key": "Authorization",
-                  "value": "Bearer {{access_token}}",
-                  "type": "text"
-                }
-              ],
-              "url": {
-                "raw": "{{base_url}}/schemes/1",
-                "host": [
-                  "{{base_url}}"
-                ],
-                "path": [
-                  "schemes",
-                  "1"
-                ]
-              }
-            },
-            "response": []
-          }
-        ]
-      },
-      {
-        "name": "Bids",
-        "item": [
-          {
-            "name": "Create Bid",
-            "request": {
-              "method": "POST",
-              "header": [
-                {
-                  "key": "Authorization",
-                  "value": "Bearer {{access_token}}",
-                  "type": "text"
-                }
-              ],
-              "body": {
-                "mode": "raw",
-                "raw": "{\n    \"crop\": \"Wheat\",\n    \"quantity\": 100,\n    \"price\": 500\n}",
-                "options": {
-                  "raw": {
-                    "language": "json"
-                  }
-                }
-              },
-              "url": {
-                "raw": "{{base_url}}/bids",
-                "host": [
-                  "{{base_url}}"
-                ],
-                "path": [
-                  "bids"
-                ]
-              }
-            },
-            "response": []
-          },
-          {
-            "name": "Get All Bids",
-            "request": {
-              "method": "GET",
-              "header": [
-                {
-                  "key": "Authorization",
-                  "value": "Bearer {{access_token}}",
-                  "type": "text"
-                }
-              ],
-              "url": {
-                "raw": "{{base_url}}/bids",
-                "host": [
-                  "{{base_url}}"
-                ],
-                "path": [
-                  "bids"
-                ]
-              }
-            },
-            "response": []
-          },
-          {
-            "name": "Get Bid by ID",
-            "request": {
-              "method": "GET",
-              "header": [
-                {
-                  "key": "Authorization",
-                  "value": "Bearer {{access_token}}",
-                  "type": "text"
-                }
-              ],
-              "url": {
-                "raw": "{{base_url}}/bids/1",
-                "host": [
-                  "{{base_url}}"
-                ],
-                "path": [
-                  "bids",
-                  "1"
-                ]
-              }
-            },
-            "response": []
-          }
-        ]
-      },
-      {
-        "name": "Soil Health",
-        "item": [
-          {
-            "name": "Get Soil Health",
-            "request": {
-              "method": "GET",
-              "header": [
-                {
-                  "key": "Authorization",
-                  "value": "Bearer {{access_token}}",
-                  "type": "text"
-                }
-              ],
-              "url": {
-                "raw": "{{base_url}}/soil_health",
-                "host": [
-                  "{{base_url}}"
-                ],
-                "path": [
-                  "soil_health"
-                ]
-              }
-            },
-            "response": []
-          }
-        ]
-      }
-    ],
-    "event": [
-      {
-        "listen": "prerequest",
-        "script": {
-          "type": "text/javascript",
-          "exec": [
-            ""
-          ]
+          "response": []
         }
-      },
-      {
-        "listen": "test",
-        "script": {
-          "type": "text/javascript",
-          "exec": [
-            ""
-          ]
+      ]
+    },
+    {
+      "name": "Schemes",
+      "item": [
+        {
+          "name": "Get All Schemes",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/schemes",
+              "host": ["{{base_url}}"],
+              "path": ["schemes"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Scheme by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/schemes/1",
+              "host": ["{{base_url}}"],
+              "path": ["schemes", "1"]
+            }
+          },
+          "response": []
         }
+      ]
+    },
+    {
+      "name": "Bids",
+      "item": [
+        {
+          "name": "Create Bid",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"crop\": \"Wheat\",\n    \"quantity\": 100,\n    \"price\": 500\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/bids",
+              "host": ["{{base_url}}"],
+              "path": ["bids"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Bids",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/bids",
+              "host": ["{{base_url}}"],
+              "path": ["bids"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Bid by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/bids/1",
+              "host": ["{{base_url}}"],
+              "path": ["bids", "1"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Soil Health",
+      "item": [
+        {
+          "name": "Get Soil Health",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/soil_health",
+              "host": ["{{base_url}}"],
+              "path": ["soil_health"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
       }
-    ],
-    "variable": [
-      {
-        "key": "base_url",
-        "value": "http://localhost:8000",
-        "type": "string"
-      },
-      {
-        "key": "access_token",
-        "value": "your-access-token",
-        "type": "string"
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
       }
-    ]
-  }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000",
+      "type": "string"
+    },
+    {
+      "key": "access_token",
+      "value": "your-access-token",
+      "type": "string"
+    }
+  ]
+}
