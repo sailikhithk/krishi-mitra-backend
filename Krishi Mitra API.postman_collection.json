@@ -1,0 +1,566 @@
+{
+	"info": {
+		"_postman_id": "1b17f37d-68c1-4eec-be30-641173b452c9",
+		"name": "Krishi Mitra API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29254636",
+		"_collection_link": "https://cloudy-star-341327.postman.co/workspace/Sai-Projects~6801ca7b-a2a5-410e-98a8-c418ba9e7bfb/collection/29254636-1b17f37d-68c1-4eec-be30-641173b452c9?action=share&source=collection_link&creator=29254636"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login-Farmer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "sailikhith2",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "farmer",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/users/token",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login-Vendor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "jane_doe",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "vendor",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/users/token",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login-Admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "sailikhith5",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "admin",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/users/token",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register-Farmer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"sailikhith3\",\n    \"email\":\"sailikhith109@gmail.com\",\n    \"password\":\"1234\",\n    \"role\":\"farmer\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users/signup",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register-Vendor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"sailikhith5\",\n    \"email\":\"sailikhith111@gmail.com\",\n    \"password\":\"1234\",\n    \"role\":\"vendor\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users/signup",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register-Admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"sailikhith5\",\n    \"email\":\"sailikhith111@gmail.com\",\n    \"password\":\"1234\",\n    \"role\":\"admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users/signup",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password Request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"john@example.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/reset-password-request",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"reset-password-request"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password Confirm",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"your-reset-token\",\n    \"new_password\": \"new_password123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/reset-password-confirm",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"reset-password-confirm"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get User",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/users/me",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"me"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Schemes",
+			"item": [
+				{
+					"name": "Get All Schemes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/schemes",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"schemes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Scheme by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/schemes/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"schemes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bids",
+			"item": [
+				{
+					"name": "Create Bid",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"crop\": \"Wheat\",\n    \"quantity\": 100,\n    \"price\": 500\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/bids",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"bids"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Bids",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/bids",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"bids"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Bid by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/bids/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"bids",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Soil Health",
+			"item": [
+				{
+					"name": "Get Soil Health",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/soil_health",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"soil_health"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Dashboards",
+			"item": [
+				{
+					"name": "Dashboard-Farmer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTcyNTQ2NDA1NiwianRpIjoiZjA3NzQ0OTgtMDc5YS00NTFmLWE1YzktYTRlMzM5ZTBhYmQyIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6eyJpZCI6MiwiZmlyc3RfbmFtZSI6InRlYWNoZXIiLCJsYXN0X25hbWUiOiJ0ZXN0IiwicGhvbmVfbnVtYmVyIjoiMTIzMTIzMTIzMiIsImFkZHJlc3MiOiJ0ZXN0IiwiZW1haWwiOiJ0ZWFjaGVyMUBnbWFpbC5jb20iLCJicmFuY2hfaWQiOjEsImRlcGFydG1lbnRfaWQiOjMsImluc3RpdHV0aW9uX2lkIjoxLCJwcm9ncmFtbWUiOm51bGwsImNlcnRpZmllZF9oYXJkX3NraWxscyI6bnVsbCwiY2VydGlmaWVkX3NvZnRfc2tpbGxzIjpudWxsLCJ1bmNlcnRpZmllZF9oYXJkX3NraWxscyI6bnVsbCwidW5jZXJ0aWZpZWRfc29mdF9za2lsbHMiOm51bGwsIm5lZ2F0aXZlX2Vtb3Rpb25zIjpudWxsLCJzY3JlZW5pbmdfaWQiOm51bGwsInN0dWRlbnRfaWQiOm51bGwsImhhcmRfc2tpbGxfYXZnX3Njb3JlIjpudWxsLCJzb2Z0X3NraWxsX2F2Z19zY29yZSI6bnVsbCwiY291cnNlX2lkIjoxLCJwYXNzd29yZF9oYXNoIjoiZ0FBQUFBQmx0QUNUNXZtcldnYjc5MDZ0TUxkRk16bXNVT0RnUUQzcVJpUS1OTjV4bmlyVmxrSi1JeTNwMWM4WW5Xal9LN1hVY043d3RYNXI4d2RPV19xcTFlMlhIN0N2V1E9PSIsInJvbGVfaWQiOjIsIm51bWJlcl9vZl9pbnRlcnZpZXdzIjowLCJpc19hY3RpdmUiOnRydWUsImNyZWF0ZWRfZGF0ZSI6IjIwMjQtMDEtMjYgMTg6NTY6MzcuNTU3MTA5IiwidXBkYXRlZF9kYXRlIjoiMjAyNC0wMS0yNiAxODo1NjozNy41NTcxMDkiLCJpbml0aWFsX3Bhc3N3b3JkX3Jlc2V0IjpmYWxzZSwicGFzc3dvcmRfbW9kaWZpZWRfZGF0ZSI6Ik5vbmUiLCJsYXN0X2xvZ2luX2RhdGUiOiJOb25lIiwicm9sZV9uYW1lIjoiVGVhY2hlciIsImJyYW5jaF9uYW1lIjoiSHlkZXJhYmFkIiwiY291cnNlX25hbWUiOiJCLkRlcyIsImluc3RpdHV0aW9uX25hbWUiOiJpaXRfaW5zdGl0dXRpb24ifSwibmJmIjoxNzI1NDY0MDU2LCJjc3JmIjoiYjMyNGMxMjgtMjQ5YS00ZTUxLWJkMmEtODgwYjFkMzI5M2JhIiwiZXhwIjoxNzI4MDU2MDU2fQ.k36XgKtaVyt2sfP3Jbw-aWkO784VvM_W6dgRfcnkMnk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/farmer-dashboard",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"farmer-dashboard"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Dashboard-Vendor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/farmer-dashboard",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"farmer-dashboard"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Dashboard-Admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYWlsaWtoaXRoNSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcyNzYxODM1OX0.7clIt6QzVJyKFPJHUbLCxo8mbKBBCG5IonOyDoh9DoA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/admin-dashboard",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"admin-dashboard"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000",
+			"type": "string"
+		},
+		{
+			"key": "access_token",
+			"value": "your-access-token",
+			"type": "string"
+		}
+	]
+}
