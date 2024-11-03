@@ -58,19 +58,26 @@ async def signup(user: UserCreate, session: AsyncSession = Depends(get_async_ses
 @router.post("/token", response_model=Token)
 async def login(
     form_data: OAuth2PasswordRequestForm = Depends(),
-    role: str = Form(...),
     session: AsyncSession = Depends(get_async_session),
 ):
     print(
-        f"Logging in user: {form_data.username} with password: {form_data.password}, role: {role}"
+        f"Attempting login for user: {form_data.username}"
     )
-    user = await authenticate_user(
-        session, form_data.username, form_data.password, role
-    )
+    # First find the user to get their role
+    result = await session.execute(select(User).where(User.username == form_data.username))
+    user = result.scalars().first()
+    
     if not user:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Incorrect username, password, or role",
+            detail="User not found",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+
+    if not verify_password(form_data.password, user.hashed_password):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Incorrect password",
             headers={"WWW-Authenticate": "Bearer"},
         )
     access_token_expires = timedelta(minutes=30)
