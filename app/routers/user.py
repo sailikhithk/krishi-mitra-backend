@@ -23,6 +23,7 @@ from app.utils.auth import authenticate_user
 from app.utils.auth import create_access_token
 from app.utils.auth import get_current_user
 from app.utils.auth import get_password_hash
+from app.utils.auth import verify_password
 
 router = APIRouter()
 
